@@ -14,6 +14,8 @@ mentions-legales.html   servie à /mentions-legales (cleanUrls)
 404.html                servie par Vercel avec le statut 404
 styles.css              feuille unique, partagée par les trois pages
 main.js                 accueil seulement : démo « J'ai 1 minute », dock, heure, « Pour maintenant »
+                        (Échap pendant la minute : le focus revient sur l'orbe, ramenée à l'écran si besoin,
+                        sauf si le visiteur a tabulé ailleurs dans la page, où le focus reste)
 vercel.json             URL propres, redirections, en-têtes (CSP, Permissions-Policy, cache)
 robots.txt, sitemap.xml
 favicon.ico, icon.svg, apple-touch-icon.png, og.jpg (image de partage 1200 × 630)
@@ -52,14 +54,37 @@ Chaque poussée sur la branche principale publie le site. `.vercelignore` écart
 - **Rien n'est enregistré** dans le navigateur (ni cookie, ni `localStorage`) et aucune requête ne part ailleurs que
   vers stillapp.fr : les mentions légales l'affirment.
 - **Images.** `python3 outils/preparer-images.py --help` (Pillow) : les sources se donnent en arguments.
-- **En-têtes.** `Strict-Transport-Security` n'est pas dans `vercel.json` : Vercel l'envoie déjà sur ses domaines.
-  La CSP est celle de la spécification, à la lettre. Conséquence connue : Lighthouse note le SEO à 92, parce que son
-  audit `robots.txt` lit le fichier avec `fetch`, que la CSP bloque (`default-src 'none'`, sans `connect-src`).
-  Les robots d'indexation, eux, lisent `robots.txt` normalement. Ajouter `connect-src 'self'` à la CSP fait passer
-  ce score à 100 : c'est un choix à faire par le propriétaire, pas un défaut du site.
-- **Poids.** `styles.css` dépasse le budget brut de la spécification (30 Ko) mais tient dans son budget compressé
-  (8 Ko en Brotli) : vérifier les deux après chaque ajout. Les commentaires y sont réduits aux titres de section
-  (polices, jetons, base, composants, en-tête, héros et démo, sections, pied/dock/annexes, mouvement réduit).
+- **En-têtes.** La CSP est celle de la spécification (§ 6.7) avec un seul écart volontaire, décidé par le propriétaire :
+  `connect-src 'self'`. Sans lui, l'audit `robots.txt` de Lighthouse (qui lit le fichier avec `fetch` depuis la page)
+  échouait et le score SEO restait à 92 ; même origine seulement, aucune ressource tierce n'est autorisée pour autant.
+  `Strict-Transport-Security` est déclaré avec `includeSubDomains`, comme dans la spécification : Vercel n'envoie par
+  défaut que `max-age=63072000`. À vérifier sur l'aperçu Vercel après le premier déploiement (`curl -I`).
+- **Poids.** `styles.css` et `main.js` dépassent le budget brut de la spécification (30 et 20 Ko) mais tiennent dans
+  leur budget compressé (8 et 7 Ko en Brotli, qualité 11) : vérifier les deux après chaque ajout
+  (`node -e 'const z=require("zlib"),f=require("fs");console.log(z.brotliCompressSync(f.readFileSync("styles.css"),{params:{[z.constants.BROTLI_PARAM_QUALITY]:11}}).length)'`).
+  La feuille ne contient aucun commentaire, chaque octet comptant dans ce budget ; elle se lit dans cet ordre : polices,
+  jetons, base, composants, en-tête, héros et démo (colonne mobile, hauteur courte, ordinateur, paysage), sections,
+  pied, dock, annexes, mouvement réduit.
+- **Validation.** `html-validate index.html mentions-legales.html 404.html` avec les préréglages `recommended` et `a11y` :
+  0 erreur. Le préréglage `document` ajoute la règle `require-sri`, qui réclame un attribut `integrity` sur `styles.css`
+  et `main.js` : faux positif pour des fichiers de même origine revalidés à chaque visite (ne pas ajouter d'`integrity`,
+  qui serait à recalculer à chaque modification).
+- **Paysage.** Dans une fenêtre large et basse (de 640 à 1023 px de large, 631 px de haut au plus : iPhone en paysage,
+  fenêtre d'ordinateur zoomée à 200 %), le héros passe en double page comme sur ordinateur (orbe à gauche, textes et
+  badge à droite), et le badge reste visible pendant la démo. En dessous de 640 px de large (iPhone SE de 1ʳᵉ génération
+  en paysage), la colonne mobile reste telle quelle.
+- **Hauteur courte.** La rupture « hauteur courte » du héros (chapô sous la mention, orbe réduite) s'étend jusqu'à
+  631 px de haut, et non 600 comme dans la spécification : entre 601 et 631 px, la formule normale donnait une orbe de
+  193 à 223 px, plus petite qu'à 600 px. Pendant la minute, en hauteur courte, le minuteur garde la place du titre et
+  la légende « Démo sans son ni vibration… » est masquée.
+- **Smart App Banner.** Dans Safari sur iPhone, la bannière de l'App Store (`apple-itunes-app`) s'insère au-dessus de la
+  page à la première visite (environ 84 pt) : la ligne de flottaison de la spécification est mesurée sans elle. Bannière
+  affichée, le badge du héros est coupé de 15 à 27 px sur un iPhone SE ou dans Safari avec ses barres (390 × 664) ; la
+  bannière est elle-même un bouton d'installation et disparaît au défilement. À contrôler sur un iPhone réel.
+- **Dock.** Sa seconde ligne (« Gratuit · pour iPhone ») se replie sur deux lignes quand la place manque (320 px de large,
+  texte agrandi) et la capsule grandit ; elle ne tronque jamais. Le dock et la pilule de l'en-tête s'effacent 96 px
+  avant que le bloc d'action final (badge, QR, mention) n'entre dans la fenêtre, et non dès le haut de la section
+  `#installer` : l'appel reste visible pendant toute la FAQ.
 - **Jetons de `styles.css`.** Ceux de la charte gardent les noms de la spécification (`--nuit`, `--texte-2`, `--t-h1`…).
   Les jetons internes sont courts : `--h` hauteur utile de la fenêtre (`100vh`, ou `100svh` sous `@supports` : jamais
   de `svh` dans une variable hors de ce bloc), `--g` gouttière, `--mg`/`--md` marges gauche et droite, `--at` espace

@@ -300,6 +300,7 @@ function finir() {
 function arreter() {
   if (etat === 'repos' || etat === 'retour') return;
   const depuisFin = etat === 'fin';
+  const actif = d.activeElement, focusIci = !actif || actif === d.body || heros.contains(actif); // parti lire ailleurs : le focus y reste
   clearTimeout(minMiseEnPlace);
   clearTimeout(minRamenee);
   ramenee = false;
@@ -312,7 +313,7 @@ function arreter() {
   lumActive = false;
   if (reduit.matches) { tween = null; k = 1; o = 1; poser(); }
   else animerVers({ k: K_REPOS, o: 1, lum: 1 }, 400, retourDoux);
-  boutonOrbe.focus({ preventScroll: true });
+  if (focusIci) boutonOrbe.focus({ preventScroll: partVisible() >= 0.5 }); // orbe hors écran : ramenée sous les yeux
   if (!depuisFin) annoncer('Minute arrêtée.');
   clearTimeout(minRetour);
   minRetour = setTimeout(versRepos, reduit.matches ? 0 : 400);
@@ -383,15 +384,16 @@ addEventListener('pageshow', e => {
 
 /* Dock et pilule de l'en-tête (§ 3.11) */
 const dock = d.getElementById('dock'), piluleEntete = $('.pilule--entete', d), piluePrix = $('.pilule--prix', d);
-const installer = d.getElementById('installer');
+const installer = d.getElementById('installer'), appelFinal = installer && installer.querySelector('.appel');
+const MARGE_APPEL = 96; // 6 rem : l'appel s'efface avant que le bloc d'action final n'entre dans la fenêtre
 let badgeVisible = true, prixVisible = false;
-// Position réelle : un saut (Fin, ancre) peut franchir #installer sans croiser de seuil
-const installerAtteint = () => !!installer && installer.getBoundingClientRect().top < (innerHeight || html.clientHeight);
+// Position réelle : un saut (Fin, ancre) peut franchir le bloc sans croiser de seuil
+const appelAtteint = () => !!appelFinal && appelFinal.getBoundingClientRect().top < (innerHeight || html.clientHeight) + MARGE_APPEL;
 function majAppel() {
   const lecture = etat === 'pause' && cause === 'defilement', demo = enMarche() && !lecture;
   // Sous 64 rem, le badge est masqué pendant la démo : en pause au défilement, sa zone ne retient plus l'appel
   const badge = badgeVisible && !(lecture && ratioScene < 0.5 && !grandEcran.matches);
-  const visible = OI && !badge && !demo && !prixVisible && !installerAtteint();
+  const visible = OI && !badge && !demo && !prixVisible && !appelAtteint();
   html.classList.toggle('montre-appel', visible);
   if (dock) rendreInerte(dock, !visible);
   if (piluleEntete) rendreInerte(piluleEntete, !visible);
@@ -399,7 +401,7 @@ function majAppel() {
 const observer = (el, f, options) => { if (OI && el) new IntersectionObserver(e => { f(e[e.length - 1]); majAppel(); }, options).observe(el); };
 observer(zoneBadge, en => { badgeVisible = en.isIntersecting; });
 observer(piluePrix, en => { prixVisible = en.isIntersecting; });
-observer(installer, () => {});
+observer(appelFinal, () => {}, { rootMargin: '0px 0px ' + MARGE_APPEL + 'px 0px' });
 observer($('.pied', d), () => {});
 observer($('.sentinelle', d), en => html.classList.toggle('defile', !en.isIntersecting)); // verre dès 24 px
 surChangement(grandEcran, majAppel);
