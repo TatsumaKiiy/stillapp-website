@@ -190,8 +190,11 @@ réduit en direct). Changements :
   la description du programme, 1206 × 2180), séance (24, 1206 × 2180), durée (10 : le sélecteur 1, 2, 5, 10, 15 min,
   coupé au-dessus de la carte du programme, 1206 × 1900), réglages en séance (26, 1206 × 2180). **Un seul écran
   « orbe + Inspire »** sur la page (la séance) : l'orbe n'apparaît pas deux fois à l'identique.
-- **Volets** (une partie d'écran recadrée, WebP qualité 84) : le calendrier du Profil (18, recadré sur le calendrier
-  seul, présent dans les deux versions de l'app ; à remplacer par une capture 1.4.0 à sa sortie), le bas de l'intro
+- **Avis** : cinq étoiles en émoji (⭐️, demande du propriétaire) au-dessus de chaque avis et devant la note ;
+  exact, car une moyenne de 5,0 sur 8 notes impose que les huit notes soient de 5 étoiles. Elles sont lues
+  « 5 étoiles sur 5 » par les lecteurs d'écran (`role="img"`) et s'affichent avec la police d'émoji du système.
+- **Volets** (une partie d'écran recadrée, WebP qualité 84) : le calendrier du Profil (image reconstituée d'après le code de
+  l'app 1.4.0, avec quinze jours de séance d'illustration : `outils/calendrier-profil/`), le bas de l'intro
   d'une séance Alvéo+ (20 : « Essayer 30 secondes », « Plus tard », sans le texte d'introduction ni l'« effet
   physiologique », allégations, et sous la pastille de l'aperçu, dont le libellé est coupé sur la capture), les
   rappels (34, le seul groupe des trois créneaux : l'écran entier porte « Choisis jusqu'à 3 moments », écart de texte

@@ -33,8 +33,8 @@ from PIL import Image, ImageFilter
 # Inspire » sur la page (la séance) : l'orbe n'apparaît pas deux fois à l'identique.
 # - accueil : coupé au-dessus de la description du programme (« s'endormir plus vite », § 10.2) ;
 # - durée : le sélecteur 1, 2, 5, 10, 15 min, coupé au-dessus de la carte du programme (même raison) ;
-# - calendrier : le calendrier du Profil seul, présent dans la version en ligne et dans la suivante (les jalons
-#   affichés dessous changent en 1.4.0 : 7 au lieu de 3) ; à remplacer par une capture 1.4.0 à sa sortie ;
+# - calendrier : n'est plus tiré d'une capture ; il est reconstitué d'après le code de l'app 1.4.0, avec des jours
+#   de séance (demande du propriétaire, 8 novembre 2026) : voir outils/calendrier-profil/ ;
 # - essai : le bas de l'intro d'une séance Alvéo+, « Essayer 30 secondes » et « Plus tard », sans le texte
 #   d'introduction ni l'« effet physiologique » (allégations, § 10.2), et sous la pastille de l'aperçu, dont le
 #   libellé est coupé sur la capture (« SÉANCE COMPLÈ… »).
@@ -47,12 +47,11 @@ ECRANS = {
     "e-seance": ("24-seance-chrome-visible.png", (0, 195, 1206, 2375), (440, 660, 880)),
     "e-duree": ("10-accueil-duree.png", (0, 130, 1206, 2030), (440, 660, 880)),
     "e-reglages": ("26-seance-feuille-reglages.png", (0, 150, 1206, 2330), (440, 660, 880)),
-    "calendrier": ("18-profil-bas.png", (0, 250, 1206, 1390), (480, 720, 960)),
     "essai": ("20-seance-intro.png", (0, 2104, 1206, 2452), (480, 960)),
     # Le seul groupe des trois créneaux de rappel, recadré à ses bords (sans « Choisis jusqu'à 3 moments »).
     "rappels": ("34-horaires-rappels.png", (60, 797, 1146, 1305), (480, 960)),
 }
-VOLETS = ("calendrier", "essai", "rappels")
+VOLETS = ("essai", "rappels")  # calendrier : outils/calendrier-profil/
 
 # Rayons de l'orbe : seize rayons irréguliers (début, crête, fin en degrés depuis midi, alpha de crête),
 # crème #F0D5BC, masque radial, flou cuit dans le fichier ; immobiles, ils respirent avec l'orbe.
