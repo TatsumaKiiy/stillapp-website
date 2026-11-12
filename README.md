@@ -155,7 +155,10 @@ plages). Tout est coupé sous `prefers-reduced-motion: reduce`. Aucun texte ni a
 - **Texte agrandi** : les groupes insécables (dates, noms, phases des rythmes, « abonnement Alvéo+ en option ») et
   l'en-tête dépendent de requêtes de conteneur en `em` (`container-type: inline-size` sur `.conteneur`, l'action du
   héros et la barre d'en-tête) : à 200 % de texte, ils reviennent à la ligne, la navigation puis le mot-symbole cèdent
-  la place, la pilule garde son verbe (« Télécharger »).
+  la place, la pilule garde son verbe (« Télécharger »). Sous 10,125 em de barre (320 px à 175 % de texte, 390 px à
+  200 %), la pilule ne tient plus à côté de la marque et se retire ; l'App Store reste au pied de page. Le titre des
+  pages annexes ne dépasse pas 20 % de la largeur de la colonne (`cqi`), pour que « confidentialité » tienne sur une
+  ligne ; au texte normal, rien ne change dès 210 px de large.
 - **Écrans sur iPhone et tablette** (sous 64rem) : l'écran de devant fait 80 % de la composition (≈ 72vw sur iPhone) ;
   de l'écran arrière ne dépasse que son bord droit, choisi sans texte (l'orbe, la croix et les réglages de la séance ;
   « Off » et « Minuit » des réglages, en entier), coupé au bord de la fenêtre (`overflow-x: clip`). Vérifié à 320,
@@ -249,6 +252,7 @@ aucune image trop grande sur iPhone (42 Kio avant la taille 660).
 | Débordement horizontal | aucun de 320 à 1920 px sur les trois pages ; aucun au zoom 200 % ni à 200 % de texte |
 | Badge au-dessus du pli | 375 × 667 (bas du badge à 575 px), 390 × 844 (718), 1366 × 768 (590), 1440 × 900 (660), 320 × 568 (492) ; héros à 100svh exactement de 320 × 568 à 2560 × 1440 ; jamais deux badges visibles ensemble ; la pilule se retire aussi devant les deux appels en texte |
 | Hauteurs | #seances : 1 075 px à 1440 (1,19 écran ; 1 820 avant) et 1 059 px à 390 (1,25 écran ; 2 856 avant) |
+| Pages légales (recette du 12 novembre 2026, après la revue) | `/confidentialite` et `/conditions`, avec l'accueil, les mentions légales et la 404 : html-validate 0 erreur ; axe-core 0 violation à 390 et 1280 ; 0 violation de CSP, 0 erreur JavaScript, 0 requête hors origine, ni cookie ni stockage ; contraste mesuré de 6,59:1 au moins ; 0 lien interne cassé, `/privacy` et `/terms` en 308 ; texte de 125 à 200 % de 320 à 1280 px : en-tête sans débordement (la pilule se retire sous 10,125 em de barre) et aucun mot coupé dans les titres des pages légales ; au texte normal, styles calculés identiques à la version précédente sur l'accueil (particules exceptées), les mentions légales, les conditions et la 404 |
 | Non mesuré ici | un vrai iPhone 12 et un MacBook Air sous Safari (demandé avant livraison) |
 
 ## À savoir avant de modifier
@@ -259,10 +263,18 @@ aucune image trop grande sur iPhone (42 Kio avant la taille 660).
   (`element.animate`). Le bloc JSON-LD n'est pas exécuté.
 - **Pages légales.** Le texte de `confidentialite.html` et de `conditions.html` a été vérifié ligne à ligne contre le
   code de l'app et sa Privacy Label (dépôt still-legal, commit b80b21c) ; seuls ont changé en les installant ici les
-  deux passages sur l'hébergement de ces pages (Vercel, polices du site, aucun outil de mesure d'audience) et les liens
-  internes. Ne pas retoucher ce texte sans refaire cette vérification, et changer alors « Dernière mise à jour ». Il
-  vouvoie, comme un texte juridique, quand le reste du site tutoie. Les anciennes adresses GitHub Pages
-  (`tatsumakiiy.github.io/still-legal/privacy.html`, `terms.html`), que l'app 1.3.1 ouvre encore, redirigent ici.
+  passages sur l'hébergement de ces pages (§ 3 et § 8 de la politique : Vercel, polices du site, aucun outil de mesure
+  d'audience, et la garantie qui encadre l'adresse IP reçue par Vercel et GitHub) et les liens internes. Ne pas
+  retoucher ce texte sans refaire cette vérification, et changer alors « Dernière mise à jour ». Il vouvoie, comme un
+  texte juridique, quand le reste du site tutoie. Les anciennes adresses GitHub Pages
+  (`tatsumakiiy.github.io/still-legal/privacy.html`, `terms.html`), que l'app 1.3.1 ouvre encore, redirigent ici dès
+  que still-legal est fusionné (voir « Mise en ligne des pages légales »).
+- **Data Privacy Framework.** Le § 3 de la politique dit que Vercel et GitHub adhèrent au cadre de protection des
+  données UE-États-Unis. Vérifié le 12 novembre 2026 sur la liste officielle (`dataprivacyframework.gov/list`) :
+  Vercel Inc. (Covina, Californie) et GitHub (San Francisco) y sont actifs pour l'UE, données hors RH comprises ;
+  renouvellement dû le 29 avril 2027 pour Vercel, le 3 août 2027 pour GitHub. À revérifier à ces dates : une
+  certification non renouvelée rend la phrase fausse. (L'accord de traitement des données de Vercel, avec ses clauses
+  contractuelles types, ne vaut que pour les offres Pro et Enterprise : la phrase ne s'y appuie pas.)
 - **Badge App Store.** `assets/img/badge-app-store-fr.svg` est le badge officiel, copié à l'octet près : ne jamais le
   modifier. Tant qu'un badge est à l'écran, la pilule de l'en-tête se retire : un seul appel à la fois. Après les avis
   et sous les prix, l'appel est un lien texte, jamais un second badge.
@@ -282,6 +294,24 @@ aucune image trop grande sur iPhone (42 Kio avant la taille 660).
   une ombre neutre décalée (une ombre colorée sur fond sombre relèverait de `dark-glow`). La grande citation des avis
   (3rem, interlignage 1,16 demandé par la direction artistique) porte `data-impeccable-ignore="tight-leading"` : la
   règle vise le texte courant, pas une citation d'affichage.
+
+## Mise en ligne des pages légales (une seule fois, dans cet ordre)
+
+L'app 1.3.1 ouvre `https://tatsumakiiy.github.io/still-legal/privacy.html` et `terms.html` : ces adresses ne doivent
+jamais mener à une 404, et la politique affirme (§ 8) qu'elles « renvoient ici ». La fenêtre entre les deux étapes doit
+donc être courte.
+
+1. Publier ce site (fusion dans `main` ; Vercel déploie).
+2. Vérifier la production : `curl -sI https://stillapp.fr/confidentialite` et `https://stillapp.fr/conditions`
+   répondent 200 ; `curl -sI https://stillapp.fr/privacy` et `https://stillapp.fr/terms` répondent 308, avec
+   `location: /confidentialite` et `/conditions`.
+3. Aussitôt après, fusionner la branche `claude/pages-legales-alveo` dans le `main` du dépôt still-legal. GitHub Pages
+   republie en une à deux minutes, puis son cache peut servir l'ancienne page une dizaine de minutes encore.
+4. Vérifier : `curl -s https://tatsumakiiy.github.io/still-legal/privacy.html | grep refresh` montre
+   `url=https://stillapp.fr/confidentialite` (`terms.html` mène à `/conditions`, `index.html` à `/mentions-legales`) ;
+   dans Safari, l'ancienne adresse ouvre la nouvelle page.
+
+Jamais dans l'autre ordre : still-legal fusionné avant le site enverrait l'app 1.3.1 sur une 404.
 
 ## Prévisualiser
 

@@ -98,7 +98,7 @@ d'usage changent (« Avant de prendre la parole », « Avant le sport ») ; écr
 | Chiffre | Emplacements |
 |---|---|
 | © 2026 | pied de `index.html`, `mentions-legales.html`, `confidentialite.html` et `conditions.html` (la 404 a un pied réduit, sans ©) |
-| `lastmod` 2026-11-08 (accueil, mentions légales), 2026-11-12 (confidentialité, conditions) | `sitemap.xml` (à mettre à la date de mise en ligne) |
+| `lastmod` 2026-11-12 (accueil, mentions légales, confidentialité, conditions : dernier changement de leur contenu) | `sitemap.xml` (à mettre à la date de mise en ligne) |
 | Dernière mise à jour : 12 novembre 2026 | `confidentialite.html` et `conditions.html` (`.annexe__maj`) : date du texte vérifié, à changer avec lui |
 
 ## Après une modification

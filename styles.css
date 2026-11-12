@@ -104,6 +104,8 @@ button{margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;cu
 @container (min-width:70em){.pilule__suite{display:inline;white-space:pre}}
 
 @container (max-width:13em){.pilule__objet{display:none}.pilule--entete{padding:0 .75rem}}
+/* texte très agrandi sur un écran étroit (moins de 10,125 em) : la pilule ne tient plus à côté de la marque et se retire ; l'App Store reste au pied */
+@container (max-width:10.125em){.pilule--entete{display:none}}
 /* un seul appel à la fois : la pilule se retire devant un badge ou un appel */
 .badge-en-vue .pilule--entete{opacity:0;visibility:hidden;transition:opacity var(--de) ease,visibility 0s var(--de)}
 .minute .entete{opacity:0;pointer-events:none}
@@ -611,6 +613,8 @@ html{timeline-scope:--v-app,--v-libre,--v-seances,--v-rythmes,--v-suivi,--v-avis
 .annexe{position:relative;z-index:1;padding:calc(var(--entete) + 3rem) 0 5rem}
 .annexe__colonne{max-width:40rem}
 .annexe h1{font-size:var(--t-h2);line-height:1.05;font-family:var(--serif);letter-spacing:-.015em}
+/* texte très agrandi sur un écran étroit : le titre rapetisse juste assez pour que son plus long mot (« confidentialité », 4,7 em) tienne sur une ligne ; sans effet au texte normal dès 210 px */
+@supports (width:1cqi){.annexe h1{font-size:min(var(--t-h2),20cqi)}}
 .annexe h2{margin-top:2.5rem;font-size:var(--t-h3);line-height:1.3;font-family:var(--serif)}
 .annexe p{margin-top:.75rem;color:var(--texte-2)}
 .annexe p a{color:var(--texte-1)}
