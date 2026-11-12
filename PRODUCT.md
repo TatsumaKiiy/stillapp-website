@@ -24,7 +24,7 @@ L'orbe est le bouton : un seul toucher lance une minute, sans menu ni écran int
 
 ## Operating Context
 
-Le site est un unique accueil, plus /mentions-legales et une 404. La démo « J'ai 1 minute » reproduit la séance libre (6 respirations 5-5, 60 s) sans son ni vibration, avec minuteur, pause, arrêt, Wake Lock, pause onglet masqué ou orbe hors écran, annonces aria-live, et mouvement réduit. La page est lue d'abord sur grand écran (paysage), aussi sur iPhone en portrait, avec et sans JavaScript.
+Le site est un unique accueil, plus /mentions-legales, la politique de confidentialité (/confidentialite) et les conditions d'utilisation (/conditions) de l'app, et une 404. La démo « J'ai 1 minute » reproduit la séance libre (6 respirations 5-5, 60 s) sans son ni vibration, avec minuteur, pause, arrêt, Wake Lock, pause onglet masqué ou orbe hors écran, annonces aria-live, et mouvement réduit. La page est lue d'abord sur grand écran (paysage), aussi sur iPhone en portrait, avec et sans JavaScript.
 
 ## Capabilities and Constraints
 

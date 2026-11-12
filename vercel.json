@@ -3,7 +3,9 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/index.html", "destination": "/", "permanent": true },
-    { "source": "/index", "destination": "/", "permanent": true }
+    { "source": "/index", "destination": "/", "permanent": true },
+    { "source": "/privacy", "destination": "/confidentialite", "permanent": true },
+    { "source": "/terms", "destination": "/conditions", "permanent": true }
   ],
   "headers": [
     {

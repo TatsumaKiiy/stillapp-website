@@ -1,7 +1,8 @@
 # stillapp.fr, version « Lumière »
 
 Site d'**Alvéo**, l'app de respiration guidée pour iPhone ([App Store](https://apps.apple.com/app/id6763119413)).
-Une page d'accueil, une page de mentions légales et une page 404.
+Une page d'accueil, les mentions légales, la politique de confidentialité et les conditions d'utilisation de l'app,
+et une page 404.
 
 Site statique : HTML, CSS et JavaScript sans framework, sans dépendance et **sans étape de build**. Ce qui est dans ce
 dossier est exactement ce qui est publié, sauf les fichiers listés dans `.vercelignore` (`README.md`, `CHIFFRES.md`,
@@ -25,13 +26,15 @@ la lueur de la pièce suit le souffle, et à la fin l'orbe s'y épanouit sous l'
 index.html              accueil : héros et démo, l'app, l'orbe libre, séances (et le programme), rythmes,
                         pratique, avis, prix, questions, appel final
 mentions-legales.html   servie à /mentions-legales (cleanUrls)
+confidentialite.html    politique de confidentialité de l'app, servie à /confidentialite
+conditions.html         conditions d'utilisation de l'app, servies à /conditions
 404.html                servie par Vercel avec le statut 404
-styles.css              feuille unique, partagée par les trois pages (jetons, base, en-tête, héros et démo,
-                        sections, entrées, parallaxe, mouvement réduit, annexes)
+styles.css              feuille unique, partagée par les cinq pages (jetons, base, en-tête, héros et démo,
+                        sections, entrées, parallaxe, mouvement réduit, annexes, pages légales et leur impression)
 main.js                 accueil seulement : démo, pause de l'orbe et de la lumière, glissement de la minute, ciel
                         de la page (data-ciel), entrées, anneaux, repli de la parallaxe, reflet au pointeur, pilule
                         de l'en-tête
-vercel.json             inchangé (URL propres, redirections, CSP, cache)
+vercel.json             URL propres, redirections (dont /privacy et /terms vers les pages légales), CSP, cache
 robots.txt, sitemap.xml
 favicon.ico, icon.svg, apple-touch-icon.png   inchangés
 og.jpg                  image de partage 1200 × 630 : le héros réel, capturé (voir « Images »)
@@ -250,19 +253,24 @@ aucune image trop grande sur iPhone (42 Kio avant la taille 660).
 
 ## À savoir avant de modifier
 
-- **CSP.** `vercel.json` est inchangé : aucun script en ligne n'est ajouté (la classe `js` est posée par `main.js`),
-  aucun attribut `style=""`, aucune balise `<style>`. **À signaler au propriétaire** : la directive `script-src`
-  autorise encore le hash `'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo='`, celui du script en ligne de la v1
-  (`document.documentElement.classList.add('js')`), qui n'existe plus ; le retirer à la prochaine modification de
-  `vercel.json` (le brief interdit d'y toucher sans nouveau script). Les valeurs dynamiques passent par
+- **CSP.** `script-src 'self'`, `style-src 'self'` : aucun script en ligne (la classe `js` est posée par `main.js`),
+  aucun attribut `style=""`, aucune balise `<style>`. Les valeurs dynamiques passent par
   `element.style.setProperty`, `transform`, `opacity` ou `translate` en JavaScript, et par l'API Web Animations
   (`element.animate`). Le bloc JSON-LD n'est pas exécuté.
+- **Pages légales.** Le texte de `confidentialite.html` et de `conditions.html` a été vérifié ligne à ligne contre le
+  code de l'app et sa Privacy Label (dépôt still-legal, commit b80b21c) ; seuls ont changé en les installant ici les
+  deux passages sur l'hébergement de ces pages (Vercel, polices du site, aucun outil de mesure d'audience) et les liens
+  internes. Ne pas retoucher ce texte sans refaire cette vérification, et changer alors « Dernière mise à jour ». Il
+  vouvoie, comme un texte juridique, quand le reste du site tutoie. Les anciennes adresses GitHub Pages
+  (`tatsumakiiy.github.io/still-legal/privacy.html`, `terms.html`), que l'app 1.3.1 ouvre encore, redirigent ici.
 - **Badge App Store.** `assets/img/badge-app-store-fr.svg` est le badge officiel, copié à l'octet près : ne jamais le
   modifier. Tant qu'un badge est à l'écran, la pilule de l'en-tête se retire : un seul appel à la fois. Après les avis
   et sous les prix, l'appel est un lien texte, jamais un second badge.
-- **Prix.** La phrase « En France : … » est écrite mot pour mot deux fois (carte Alvéo+ et FAQ 2), nulle part ailleurs ;
-  aucun montant hors de cette phrase (`CHIFFRES.md`). Dans la carte, elle est composée en bloc par des `<span>`
-  (« En France : » en libellé, une ligne par montant, unité accolée par des espaces insécables) sans changer un mot.
+- **Prix.** La phrase « En France : … » est écrite mot pour mot deux fois (carte Alvéo+ et FAQ 2), nulle part ailleurs
+  sur l'accueil ; aucun montant hors de cette phrase (`CHIFFRES.md`). Dans la carte, elle est composée en bloc par des
+  `<span>` (« En France : » en libellé, une ligne par montant, unité accolée par des espaces insécables) sans changer un
+  mot. Les conditions d'utilisation (`conditions.html`, § 7) écrivent aussi les deux montants, dans leur propre phrase :
+  un changement de prix les touche aussi (voir « Pages légales »).
 - **Rien n'est enregistré** dans le navigateur et aucune requête ne part ailleurs que vers stillapp.fr.
 - **Polices.** Instrument Serif et Inter sont imposées par la charte de l'app ; la règle `overused-font` du détecteur
   Impeccable est une exception assumée. Les titres sont en romain ; l'italique est réservé à la voix de l'app

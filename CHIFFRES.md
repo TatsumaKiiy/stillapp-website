@@ -5,7 +5,11 @@ Ce fichier n'est pas publié (`.vercelignore`). **À relire à chaque changement
 Règle de vérité : un chiffre publié est vrai dans la version en ligne de l'app **et** dans la suivante ; en cas de doute,
 on retire la phrase.
 
-Les emplacements sont donnés par section (`#id`) et sélecteur dans `index.html`, sauf mention. Pour chercher un chiffre,
+Les emplacements sont donnés par section (`#id`) et sélecteur dans `index.html`, sauf mention.
+**Pages légales** (`confidentialite.html`, `conditions.html`) : leur texte, vérifié ligne à ligne contre le code de
+l'app (dépôt still-legal, commit b80b21c), écrit ses propres chiffres (prix, 24 h, 17 séances, 1 à 15 min, 16 séances
+Alvéo+, 30 secondes, versions 1.3.1 et 1.4.0, 12 mois, 48 h, 9+, 15 ans). Un chiffre qui change s'y reporte avec une
+nouvelle vérification et une nouvelle date de « Dernière mise à jour ». Pour chercher un chiffre,
 tolérer les espaces insécables écrites `&nbsp;` dans le source : `grep -n '4,99&nbsp;€' index.html`.
 
 Aucun chiffre nouveau par rapport à la version précédente du site : seuls ses emplacements ont changé, plus la notation
@@ -67,7 +71,7 @@ d'usage changent (« Avant de prendre la parole », « Avant le sport ») ; écr
 
 | Chiffre | Source | Emplacements |
 |---|---|---|
-| « En France : 4,99 € par mois ou 29,99 € par an (soit 2,49 € par mois), TTC. Ailleurs, le prix s'affiche dans ta devise sur l'App Store. » | App Store Connect ; décision du propriétaire (D 4) | `.offre--plus .offre__tarif` (les deux montants en `<strong>`, mis en valeur, dans la phrase même) et FAQ 2 : **mot pour mot, deux fois, nulle part ailleurs**. Aucun montant hors de cette phrase |
+| « En France : 4,99 € par mois ou 29,99 € par an (soit 2,49 € par mois), TTC. Ailleurs, le prix s'affiche dans ta devise sur l'App Store. » | App Store Connect ; décision du propriétaire (D 4) | `.offre--plus .offre__tarif` (les deux montants en `<strong>`, mis en valeur, dans la phrase même) et FAQ 2 : **mot pour mot, deux fois, nulle part ailleurs** sur l'accueil. Aucun montant hors de cette phrase ; les conditions d'utilisation (`conditions.html` § 7) écrivent aussi « 4,99&nbsp;€ par mois » et « 29,99&nbsp;€ par an » en France, dans leur propre phrase |
 | 0 € (gratuit, sans limite de durée) | l'app est gratuite au téléchargement | `.offre .offre__tarif` (carte Gratuit) |
 | Essai : formule annuelle seulement, premier abonnement, éligibilité Apple, **aucune durée écrite** | `app/paywall.tsx:210-224` | premier `.offre__conditions` ; FAQ 3 |
 | Résiliation au moins 24 h avant la fin de la période | `locales/fr/paywall.json:49-52` | second `.offre__conditions` ; FAQ 4 |
@@ -85,7 +89,7 @@ d'usage changent (« Avant de prendre la parole », « Avant le sport ») ; écr
 
 | Chiffre | Source | Emplacements |
 |---|---|---|
-| Identifiant App Store 6763119413 | App Store Connect | `<meta name="apple-itunes-app">` ; JSON-LD (`installUrl`, `sameAs`) ; les sept liens de l'accueil (pilule de l'en-tête, badge du héros, badge de fin de démo `.badge--fin`, appel `#avis .avis__appel`, appel `#prix .prix__appel`, badge de `#installer`, lien du pied) ; QR (`assets/img/qr-app-store.svg`, à régénérer si l'adresse change) ; `mentions-legales.html` (pilule, pied) ; `404.html` (pilule, lien, pied) |
+| Identifiant App Store 6763119413 | App Store Connect | `<meta name="apple-itunes-app">` ; JSON-LD (`installUrl`, `sameAs`) ; les sept liens de l'accueil (pilule de l'en-tête, badge du héros, badge de fin de démo `.badge--fin`, appel `#avis .avis__appel`, appel `#prix .prix__appel`, badge de `#installer`, lien du pied) ; QR (`assets/img/qr-app-store.svg`, à régénérer si l'adresse change) ; `mentions-legales.html`, `confidentialite.html` et `conditions.html` (pilule, pied) ; `404.html` (pilule, lien, pied) |
 | iOS 15.1 ou plus récent | fiche App Store (« Nécessite iOS 15.1 ») | JSON-LD (`operatingSystem`) ; `#installer .intro` ; FAQ 6 ; ligne Cisco du crédit des marques (pied) |
 | Pour iPhone ; ni Android ni iPad annoncé ; français et anglais | fiche App Store ; `app.json:17` | h1 ; `.heros__mention` ; `#installer` ; FAQ 6 |
 
@@ -93,12 +97,14 @@ d'usage changent (« Avant de prendre la parole », « Avant le sport ») ; écr
 
 | Chiffre | Emplacements |
 |---|---|
-| © 2026 | pied de `index.html` et de `mentions-legales.html` (la 404 a un pied réduit, sans ©) |
-| `lastmod` 2026-11-08 | `sitemap.xml` (à mettre à la date de mise en ligne) |
+| © 2026 | pied de `index.html`, `mentions-legales.html`, `confidentialite.html` et `conditions.html` (la 404 a un pied réduit, sans ©) |
+| `lastmod` 2026-11-08 (accueil, mentions légales), 2026-11-12 (confidentialité, conditions) | `sitemap.xml` (à mettre à la date de mise en ligne) |
+| Dernière mise à jour : 12 novembre 2026 | `confidentialite.html` et `conditions.html` (`.annexe__maj`) : date du texte vérifié, à changer avec lui |
 
 ## Après une modification
 
-1. Chercher l'ancien chiffre dans `index.html`, `mentions-legales.html`, `404.html` et `main.js`.
+1. Chercher l'ancien chiffre dans `index.html`, `mentions-legales.html`, `confidentialite.html`, `conditions.html`,
+   `404.html` et `main.js`.
 2. Vérifier que la phrase reste vraie dans les deux versions de l'app (en ligne et à venir).
 3. Si un fichier de `/assets/` change, le renommer : il est servi avec un cache d'un an.
 4. Aucun script en ligne : `vercel.json` n'a pas à changer tant qu'il n'en est pas ajouté.
