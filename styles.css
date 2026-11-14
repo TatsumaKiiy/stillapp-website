@@ -406,9 +406,9 @@ button{margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;cu
 /* LES RYTHMES : huit anneaux au vrai tempo */
 .rythmes__tete{display:grid;gap:1.5rem;align-items:end}
 @media (min-width:64rem){.rythmes__tete{grid-template-columns:minmax(0,1fr) auto}}
-.pause-anneaux{display:inline-flex;align-items:center;gap:.625rem;min-height:2.75rem;padding:0 1.125rem 0 .875rem;border-radius:999px;border:1px solid var(--filet-fort);color:var(--texte-2);font-size:var(--t-petit);justify-self:start;transition:background-color var(--dp) ease,color var(--dp) ease,transform var(--dp) var(--cs)}
-.pause-anneaux:active{transform:scale(.97)}
-@media (hover:hover) and (pointer:fine){.pause-anneaux:hover{background:var(--verre-1);color:var(--texte-1)}}
+.pause-anneaux,.bouton-contour{display:inline-flex;align-items:center;gap:.625rem;min-height:2.75rem;padding:0 1.125rem 0 .875rem;border-radius:999px;border:1px solid var(--filet-fort);color:var(--texte-2);font-size:var(--t-petit);justify-self:start;transition:background-color var(--dp) ease,color var(--dp) ease,transform var(--dp) var(--cs)}
+.pause-anneaux:active,.bouton-contour:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.pause-anneaux:hover,.bouton-contour:hover{background:var(--verre-1);color:var(--texte-1)}}
 .pause-anneaux[aria-pressed=true]{background:var(--verre-2);color:var(--texte-1)}
 .pause-anneaux[aria-pressed=true] .ico__pause{display:none}
 .pause-anneaux[aria-pressed=true] .ico__lecture{display:block}
@@ -663,3 +663,29 @@ html{timeline-scope:--v-app,--v-libre,--v-seances,--v-rythmes,--v-suivi,--v-avis
 .pied--reduit{padding:2rem 0 calc(2rem + env(safe-area-inset-bottom))}
 .pied--reduit .pied__liens{display:flex;flex-wrap:wrap;gap:0 1.5rem;margin-top:0}
 .pied--reduit .legal{margin-top:.75rem;max-width:none}
+/* Page presse : la colonne des annexes, les visuels sur 64rem */
+.bouton-contour{text-decoration:none}
+.bouton-contour[hidden]{display:none}
+.annexe .presse__kit,.presse__contenu p,.annexe .contact{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;margin-top:1.5rem}
+.presse__poids,.annexe .presse__usage,.presse__banniere figcaption{font-size:var(--t-petit);color:var(--texte-3)}
+.annexe h2 + .presse__usage,.encadre .presse__usage + p{margin-top:.5rem}
+.encadre .presse__usage + p{color:var(--texte-1)}
+.faits-presse{margin-top:1rem;border-top:1px solid var(--filet)}
+.faits-presse > div{padding:1rem 0;border-bottom:1px solid var(--filet)}
+.faits-presse dt{font-weight:600}
+.faits-presse dd{margin-top:.25rem;color:var(--texte-2)}
+.faits-presse a{color:var(--texte-1)}
+@media (min-width:48rem){.faits-presse > div{display:grid;grid-template-columns:9rem 1fr;gap:var(--g)}.faits-presse dd{margin-top:0}}
+.presse__visuels{max-width:64rem}
+.presse__visuels > p,.presse__contenu{max-width:40rem}
+.presse__banniere{margin-top:1.5rem}
+.presse__banniere img,.presse__captures img{width:100%;border-radius:1.25rem;outline:1px solid rgba(var(--ivoire),.09);outline-offset:-1px;background:#0E0D11}
+.presse__banniere figcaption{margin-top:.5rem}
+.annexe .presse__captures{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--g);margin-top:var(--g);padding:0;list-style:none}
+.annexe .presse__captures li{margin:0}
+.presse__captures img{border-radius:clamp(.75rem,1.6vw,1.25rem)}
+.presse__contenu{display:grid;gap:1.25rem;margin-top:2rem}
+.annexe .presse__contenu h3{margin-top:0}
+.presse__icone{border-radius:22%}
+@media (min-width:48rem){.annexe .presse__captures{grid-template-columns:repeat(4,minmax(0,1fr))}.presse__contenu{grid-template-columns:auto 1fr;gap:1.5rem}}
+.contact__adresse{font-size:var(--t-intro);overflow-wrap:anywhere}

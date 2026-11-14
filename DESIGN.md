@@ -224,6 +224,8 @@ components:
     textColor: "{colors.texte-2}"
     rounded: "{rounded.pilule}"
     minHeight: "2.75rem"
+  bouton-contour:                        # page presse : « Télécharger le kit presse », « Afficher l'adresse e-mail », « Copier »
+    style: "celui de bouton-secondaire (règle partagée avec .pause-anneaux), en lien ou en bouton"
   carte-pilier:                          # une carte haute par pilier, sa lumière posée en haut
     background: "teinte .10 → 0 sur 45 %, sur nuit .66 ; lueur radiale de la teinte (.50 → 0) centrée au-dessus du bord haut"
     rounded: "{rounded.carte}"

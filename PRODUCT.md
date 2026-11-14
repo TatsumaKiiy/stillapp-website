@@ -24,7 +24,7 @@ L'orbe est le bouton : un seul toucher lance une minute, sans menu ni écran int
 
 ## Operating Context
 
-Le site est un unique accueil, plus /mentions-legales, la politique de confidentialité (/confidentialite) et les conditions d'utilisation (/conditions) de l'app, et une 404. La démo « J'ai 1 minute » reproduit la séance libre (6 respirations 5-5, 60 s) sans son ni vibration, avec minuteur, pause, arrêt, Wake Lock, pause onglet masqué ou orbe hors écran, annonces aria-live, et mouvement réduit. La page est lue d'abord sur grand écran (paysage), aussi sur iPhone en portrait, avec et sans JavaScript.
+Le site est un unique accueil, plus /mentions-legales, la politique de confidentialité (/confidentialite) et les conditions d'utilisation (/conditions) de l'app, une page presse (/presse, liée seulement depuis le pied des pages : présentations, faits vérifiés, visuels en un zip, contact presse dont l'adresse n'est jamais en clair dans le HTML), et une 404. La démo « J'ai 1 minute » reproduit la séance libre (6 respirations 5-5, 60 s) sans son ni vibration, avec minuteur, pause, arrêt, Wake Lock, pause onglet masqué ou orbe hors écran, annonces aria-live, et mouvement réduit. La page est lue d'abord sur grand écran (paysage), aussi sur iPhone en portrait, avec et sans JavaScript.
 
 ## Capabilities and Constraints
 
@@ -44,6 +44,7 @@ Nom « Alvéo » (orbe féminine, « Alvéo+ »), tutoiement, phrases courtes, t
 
 - Écrans de l'app 1.4.0 (14 novembre 2026), rendus depuis le code du build 14 (`bcca6a0`) avec les données de démonstration des captures App Store (« Camille ») : accueil, séance libre en cours, fin d'une séance libre, feuille « Réglages de séance », bas de l'intro d'une séance Alvéo+ (« Essayer 30 secondes »), carte de la série du Profil, trois rappels aux horaires par défaut. Sources et recadrages : `outils/preparer-images.py` et README, « Images ».
 - Note App Store : 5,0 sur 5 · 8 notes · App Store France · relevé le 14 novembre 2026. Deux avis cités mot pour mot : Rose88rjkg (19 mai 2026) et Wario513 (21 mai 2026).
+- Kit presse (14 novembre 2026) : textes court et long et faits du kit marketing, captures App Store FR et EN de la 1.4.0, bannière et visuels sans texte, icône ; studio : Pépite Rouge, fondé par Giovani Bassaya-Virapin. La page presse ne cite ni avis ni note.
 - Absences à ne jamais combler : aucun article de presse, aucun chiffre d'utilisateurs, aucun autre témoignage, aucune durée d'essai vérifiée.
 
 ## Product Principles

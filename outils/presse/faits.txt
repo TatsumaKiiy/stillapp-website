@@ -1,0 +1,43 @@
+Alvéo : les faits (version 1.4.0, relevés le 14 novembre 2026)
+
+Ce que c’est
+Une app de respiration guidée. Une orbe lumineuse rythme le souffle ; un mot, un carillon et une vibration marquent chaque phase. Pas de voix off, pas de compte à créer.
+
+Appareils
+iPhone et iPad, iOS et iPadOS 15.1 ou plus récent. La version Android est en préparation.
+
+Langues
+Français et anglais.
+
+Versions
+1.0 le 30 avril 2026. 1.4.0, la version actuelle, le 14 novembre 2026.
+
+Contenu
+- L’orbe : 1, 2, 5, 10 ou 15 minutes, en cohérence cardiaque (5 secondes pour inspirer, 5 pour expirer).
+- 17 séances guidées en cinq piliers (Apaiser, Dormir, Concentrer, Équilibrer, Énergiser), sur huit rythmes de respiration : cohérence cardiaque, cohérence 4-6, respiration carrée, 4-7-8, 4-8, rythme régulier, soupir cyclique et respiration dynamique.
+- Le programme du soir « 7 soirs pour ralentir » : une séance par soir, pendant sept soirs.
+
+Prix (App Store France)
+Gratuit, avec achats intégrés : Alvéo+ Mensuel, 4,99 € ; Alvéo+ Annuel, 29,99 € (TTC). Ailleurs, le prix s’affiche dans la devise locale.
+Sans abonnement : l’orbe, sans limite de durée, la séance Double Inspire et un aperçu de 30 secondes de chaque séance Alvéo+, autant de fois qu’on veut.
+Avec Alvéo+ : les 16 autres séances, le programme du soir et des favoris illimités.
+
+Confidentialité
+Pas de compte, pas de publicité, aucun suivi d’une app à l’autre.
+La pratique (séances, série, préférences) est enregistrée sur l’appareil, et en partie dans l’iCloud de la personne.
+Les statistiques d’usage ne partent qu’avec son accord, vers un hébergement situé dans l’Union européenne.
+Pour gérer l’abonnement Alvéo+, l’app envoie dès son ouverture des informations techniques à un prestataire (dont un identifiant aléatoire et le pays).
+Politique de confidentialité : https://stillapp.fr/confidentialite
+
+Accessibilité
+VoiceOver annonce chaque phase de la respiration. Grandes tailles de texte et Réduire les animations pris en charge.
+
+Qui la fait
+Pépite Rouge, studio fondé par Giovani Bassaya-Virapin, en France. Sur l’App Store, l’éditeur est Giovani Bassaya-Virapin.
+
+Liens
+Site : https://stillapp.fr
+App Store : https://apps.apple.com/app/id6763119413
+Contact presse : stillapp.contact@gmail.com
+
+Alvéo est un outil de bien-être, pas un dispositif médical.

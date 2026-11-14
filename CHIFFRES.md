@@ -99,18 +99,36 @@ d'usage changent (« Avant de prendre la parole », « Avant le sport ») ; écr
 | iOS (et iPadOS) 15.1 ou plus récent | fiche App Store (`minimumOsVersion` 15.1, relevé le 14 novembre 2026) | JSON-LD (`operatingSystem`) ; `#installer .intro` ; FAQ 6 ; ligne Cisco du crédit des marques (pied) |
 | Pour iPhone et iPad (l'app accepte l'iPad depuis la 1.3.1 : `supportsTablet: true`, `app.json:17` ; fiche App Store : appareils iPad listés) ; Android : version en préparation (FAQ « Sur quels appareils ? », 14 novembre 2026) ; français et anglais | fiche App Store ; `app.json` | `<title>`, meta description, `og:description`, JSON-LD ; `.heros__mention` ; `#installer` ; FAQ 6 ; pied des quatre pages (« pour iPhone et iPad »). Le h1 et `og:title` (« pour iPhone ») ne changent pas : l'image de partage les reproduit |
 
+## Page presse (`presse.html`, et les textes du zip : `outils/presse/`)
+
+Relevés le 14 novembre 2026. La page et `outils/presse/faits.txt` disent la même chose ; un chiffre qui change se
+corrige dans les deux, **puis le zip se refait sous un nouveau nom** (`outils/preparer-presse.py`, `/assets/` est
+`immutable`) et `presse.html` suit (deux liens de téléchargement, poids « 5,3 Mo »).
+
+| Chiffre | Source | Emplacements |
+|---|---|---|
+| Prix tels que l'App Store France les affiche : « Gratuit · Achats intégrés », Alvéo+ Mensuel 4,99 €, Alvéo+ Annuel 29,99 €, TTC | fiche `apps.apple.com/fr/app/id6763119413`, relevée le 14 novembre 2026 (section « Achats intégrés ») | « Les faits », ligne Prix (montants en `<strong class="num">`) ; `faits.txt`. Écrits sous la forme de l'App Store, pas dans la phrase « En France : … » de l'accueil (règle de l'accueil seulement) ; aucune durée d'essai |
+| Sans abonnement : l'orbe, Double Inspire, aperçu de 30 secondes « autant de fois qu'on veut » ; avec Alvéo+ : 16 séances, le programme, favoris illimités | voir « Séances » et « Contenu gratuit » ci-dessus ; description de la fiche App Store | ligne Prix ; texte long |
+| 1.0 le 30 avril 2026 ; 1.4.0 le 14 novembre 2026 | API de recherche d'Apple (`releaseDate` 2026-04-30, `currentVersionReleaseDate` 2026-11-14, `version` 1.4.0) | ligne Versions ; texte long ; `annexe__maj` (« Version 1.4.0 ») ; nom du zip |
+| « neuf jours après le début du développement » (premier commit le 21 avril 2026) | `git log` du dépôt de l'app (kit marketing § 5.5) | texte long |
+| iOS et iPadOS 15.1 ; français et anglais ; iPhone et iPad ; Android « en préparation » (sans date) | fiche App Store (`minimumOsVersion` 15.1, `languageCodesISO2A` EN, FR) ; FAQ de l'accueil | ligne Appareils, ligne Langues ; textes court et long |
+| 17 séances, cinq piliers, huit rythmes, orbe 1 à 15 min en 5-5, « 7 soirs pour ralentir » | voir « Séances », « L'orbe et la démo », « Rythmes » | textes court et long ; ligne Contenu |
+| Confidentialité : pas de compte, pas de publicité, aucun suivi d'une app à l'autre, statistiques seulement avec accord et hébergées dans l'UE, informations techniques envoyées dès l'ouverture pour gérer Alvéo+ | `confidentialite.html` (résumé, § 2.3, § 2.4, § 3) | ligne Confidentialité ; `faits.txt` |
+| Visuels : icône 1024 × 1024, captures 1320 × 2868 (8 FR, 8 EN), bannière 3840 × 1646, séances 3840 × 2160, LinkedIn 1584 × 396 et 1080 × 1350 ; zip de 5 261 009 octets (« 5,3 Mo ») | fichiers du zip | « Visuels » ; `LISEZMOI.txt` |
+| Contact presse : stillapp.contact@gmail.com | décision du propriétaire (kit marketing § 5.5) | **jamais en clair dans `presse.html`** : repli « stillapp.contact [at] gmail.com », adresse assemblée par `presse.js` ; en clair dans `LISEZMOI.txt` et `faits.txt` du zip |
+
 ## Dates
 
 | Chiffre | Emplacements |
 |---|---|
 | © 2026 | pied de `index.html`, `mentions-legales.html`, `confidentialite.html` et `conditions.html` (la 404 a un pied réduit, sans ©) |
-| `lastmod` 2026-11-14 (accueil, mentions légales, confidentialité, conditions : dernier changement de leur contenu, la mise à jour de la 1.4.0 ; le pied des quatre pages dit « pour iPhone et iPad ») | `sitemap.xml` (à mettre à la date de mise en ligne) |
+| `lastmod` 2026-11-14 (accueil, mentions légales, confidentialité, conditions : dernier changement de leur contenu, la mise à jour de la 1.4.0 ; le pied des quatre pages dit « pour iPhone et iPad » ; presse : sa création) | `sitemap.xml` (à mettre à la date de mise en ligne) |
 | Dernière mise à jour : 14 novembre 2026 (politique : § 6.2 et § 8, effacement de l'identifiant des statistiques depuis la 1.4.0) ; 12 novembre 2026 (conditions) | `confidentialite.html` et `conditions.html` (`.annexe__maj`) : date du texte vérifié, à changer avec lui |
 
 ## Après une modification
 
 1. Chercher l'ancien chiffre dans `index.html`, `mentions-legales.html`, `confidentialite.html`, `conditions.html`,
-   `404.html` et `main.js`.
+   `presse.html`, `404.html`, `main.js` et `outils/presse/` (puis refaire le zip sous un nouveau nom).
 2. Vérifier que la phrase reste vraie dans les deux versions de l'app (en ligne et à venir).
 3. Si un fichier de `/assets/` change, le renommer : il est servi avec un cache d'un an.
 4. Aucun script en ligne : `vercel.json` n'a pas à changer tant qu'il n'en est pas ajouté.

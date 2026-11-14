@@ -2,7 +2,7 @@
 
 Site d'**Alvéo**, l'app de respiration guidée pour iPhone et iPad ([App Store](https://apps.apple.com/app/id6763119413)).
 Une page d'accueil, les mentions légales, la politique de confidentialité et les conditions d'utilisation de l'app,
-et une page 404.
+une page presse et une page 404.
 
 Site statique : HTML, CSS et JavaScript sans framework, sans dépendance et **sans étape de build**. Ce qui est dans ce
 dossier est exactement ce qui est publié, sauf les fichiers listés dans `.vercelignore` (`README.md`, `CHIFFRES.md`,
@@ -28,9 +28,11 @@ index.html              accueil : héros et démo, l'app, l'orbe libre, séances
 mentions-legales.html   servie à /mentions-legales (cleanUrls)
 confidentialite.html    politique de confidentialité de l'app, servie à /confidentialite
 conditions.html         conditions d'utilisation de l'app, servies à /conditions
+presse.html             page presse, servie à /presse (voir « La page presse ») ; liée depuis le pied de chaque page
 404.html                servie par Vercel avec le statut 404
-styles.css              feuille unique, partagée par les cinq pages (jetons, base, en-tête, héros et démo,
+styles.css              feuille unique, partagée par les six pages (jetons, base, en-tête, héros et démo,
                         sections, entrées, parallaxe, mouvement réduit, annexes, pages légales et leur impression)
+presse.js               page presse seulement : assemble l'adresse du contact presse au clic, bouton « Copier »
 main.js                 accueil seulement : démo, pause de l'orbe et de la lumière, glissement de la minute, ciel
                         de la page (data-ciel), entrées, anneaux, repli de la parallaxe, reflet au pointeur, pilule
                         de l'en-tête
@@ -42,7 +44,9 @@ assets/fonts/           Instrument Serif et Inter (WOFF2, sous-ensembles latins)
 assets/img/             badge officiel Apple et QR code (inchangés), icône, écrans de l'app 1.4.0 (e-accueil-v2,
                         e-seance-v2, e-fin, e-reglages-v2 : 440, 660 et 880 px), volets (profil, essai-v2, rappels-v2), rayons de
                         l'orbe (rayons-orbe-v2.webp), grain.png
-outils/                 preparer-images.py : refait les écrans, les rappels, les rayons et le grain (non publié)
+assets/presse/          le kit presse en un seul zip (alveo-kit-presse-1-4-0.zip, 5,0 Mio)
+outils/                 preparer-images.py : refait les écrans, les rappels, les rayons et le grain ; preparer-presse.py
+                        et presse/ (textes du zip) : refont les aperçus et le zip de la page presse (non publié)
 ```
 
 ## La lumière
@@ -226,7 +230,9 @@ réduit en direct). Changements :
 | | Brut | Brotli (q 11) | Budget brut |
 |---|---|---|---|
 | `index.html` | 47,7 Kio (44,8 Ko au polissage 2) | 8,7 Kio | 60 Ko |
-| `styles.css` | 56,7 Kio (54,8 Ko au polissage 2 ; les pages légales et la 1.4.0 l'ont fait grandir) | 12,3 Kio | 60 Ko (55 Ko visés depuis le polissage 2) |
+| `styles.css` | 58,5 Kio, 59 944 octets (54,8 Ko au polissage 2 ; les pages légales, la 1.4.0 et la page presse l'ont fait grandir) | 12,6 Kio | 60 Ko (55 Ko visés depuis le polissage 2) : il ne reste que 56 octets |
+| `presse.html` | 14,3 Kio | 4,0 Kio | 60 Ko |
+| `presse.js` | 1,9 Kio | 0,7 Kio | — |
 | `main.js` | 33,4 Kio | 9,9 Kio | 45 Ko |
 
 Mesures du 14 novembre 2026 (mise à jour de la 1.4.0, Brotli de `zlib` de Node). Poids de l'accueil défilé jusqu'au
@@ -262,6 +268,7 @@ aucune image trop grande sur iPhone (42 Kio avant la taille 660).
 | Hauteurs | #seances : 1 075 px à 1440 (1,19 écran ; 1 820 avant) et 1 059 px à 390 (1,25 écran ; 2 856 avant) |
 | Pages légales (recette du 12 novembre 2026, après la revue) | `/confidentialite` et `/conditions`, avec l'accueil, les mentions légales et la 404 : html-validate 0 erreur ; axe-core 0 violation à 390 et 1280 ; 0 violation de CSP, 0 erreur JavaScript, 0 requête hors origine, ni cookie ni stockage ; contraste mesuré de 6,59:1 au moins ; 0 lien interne cassé, `/privacy` et `/terms` en 308 ; texte de 125 à 200 % de 320 à 1280 px : en-tête sans débordement (la pilule se retire sous 10,125 em de barre) et aucun mot coupé dans les titres des pages légales ; au texte normal, styles calculés identiques à la version précédente sur l'accueil (particules exceptées), les mentions légales, les conditions et la 404 |
 | Mise à jour de la 1.4.0 (recette du 14 novembre 2026, serveur local qui applique `vercel.json`) | html-validate 9 (`recommended` + `a11y`) : 0 erreur sur les cinq pages ; axe-core 4 : 0 violation sur l'accueil à 390 et 1440, en mouvement normal et réduit (après défilement complet), et sur les quatre autres pages à 390 et 1280 ; console : 0 erreur ni avertissement (hors le statut 404 voulu de `/nexiste-pas`), 0 violation de CSP, 0 requête hors origine, 0 échec ; 38 chemins internes et toutes les ancres résolus, `/privacy`, `/terms`, `/index.html` en 308 ; débordement horizontal nul à 390, 1280 et 1440 ; 13 images de l'accueil chargées ; badge du héros au-dessus du pli à 320 × 568 (bas à 504 px, mention à 541), 375 × 667 (587), 390 × 844 (730), 1366 × 768 (602) et 1440 × 900 (672) ; mouvement réduit : aucune animation en cours. Captures à 1440 × 900 et 390 × 844 regardées section par section. Lighthouse et fluidité non refaits (aucun changement de script ni de lumière) |
+| Page presse (recette du 14 novembre 2026, serveur local qui applique `vercel.json`, Playwright 1.63) | `/presse` 200 avec la CSP, `/presse.html` en 308 vers `/presse` ; html-validate 9 (`recommended` + `a11y`) : 0 erreur sur les six pages ; axe-core 4.14 : 0 violation à 1440 × 900 et 390 × 844, avant et après le clic sur le contact ; console : 0 erreur ni avertissement, 0 violation de CSP, 0 requête hors origine, 0 échec, aucune réponse ≥ 400 ; débordement horizontal nul ; 8 images chargées ; HTML servi sans l'adresse ni `mailto:`, et DOM sans l'adresse avant le clic ; au clic : lien `mailto:` juste, focus sur le lien, « Copier » remplit le presse-papiers ; sans JavaScript : le repli « stillapp.contact [at] gmail.com » s'affiche, le bouton non ; le zip se télécharge, identique au fichier du dépôt ; un lien « Presse » dans le pied de chaque page (404 comprise), aucun dans l'en-tête ; textes relus avec les listes de `outils/relire_kit.py` du kit marketing (`claims.test.ts`, DA § 13, ancien nom, IA, emploi) : rien à signaler. Lighthouse non mesuré |
 | Non mesuré ici | un vrai iPhone 12 et un MacBook Air sous Safari (demandé avant livraison) |
 
 ## À savoir avant de modifier
@@ -308,6 +315,33 @@ aucune image trop grande sur iPhone (42 Kio avant la taille 660).
   une ombre neutre décalée (une ombre colorée sur fond sombre relèverait de `dark-glow`). La grande citation des avis
   (3rem, interlignage 1,16 demandé par la direction artistique) porte `data-impeccable-ignore="tight-leading"` : la
   règle vise le texte courant, pas une citation d'affichage.
+
+## La page presse
+
+`/presse`, pour les journalistes : liée seulement depuis le pied des six pages (jamais dans l'en-tête), dans le
+sitemap. Mise en page des pages annexes (colonne de 40rem, lumière du jour en haut), les visuels sur 64rem.
+
+- **Contenu** : présentation courte et longue (les blocs `fr-presse-court` et `fr-presse-long` du kit marketing, mot
+  pour mot), les faits (appareils, langues, versions, contenu, prix tels que l'App Store France les affiche,
+  confidentialité, accessibilité, liens), les visuels, qui fait Alvéo (« Pépite Rouge, studio fondé par Giovani
+  Bassaya-Virapin ») et le contact presse. Chaque chiffre a sa source dans `CHIFFRES.md` (« Page presse »). Rien sur
+  l'ancien nom de l'app, aucun avis, aucune note, aucune durée d'essai.
+- **Contact presse masqué** : l'adresse n'est jamais écrite en clair dans le HTML (ni texte, ni `mailto:`). Sans
+  script, la page montre « stillapp.contact [at] gmail.com » ; avec `presse.js`, ce repli est remplacé au chargement
+  par le bouton « Afficher l'adresse e-mail », qui assemble l'adresse au clic, la pose en lien `mailto:`, y met le
+  focus et ajoute « Copier l'adresse » (annonce `aria-live`). Le pied de la page renvoie à `#contact`. Aucun script
+  en ligne : la CSP de `vercel.json` n'a pas changé. L'adresse reste en clair dans le pied des cinq autres pages et
+  dans les mentions légales.
+- **Kit presse** : un seul zip, `assets/presse/alveo-kit-presse-1-4-0.zip` (5 261 009 octets) : LISEZMOI, textes court
+  et long, faits (`outils/presse/`, les mêmes que la page), l'icône (PNG 1024), les 8 captures iPhone de l'App Store en
+  français et en anglais (JPEG qualité 88, 4:4:4, 1320 × 2868, profil sRGB gardé), la bannière sans texte
+  (3840 × 1646), les images des séances autour de l'orbe (3840 × 2160), deux visuels LinkedIn sans texte ajouté
+  (bannière 1584 × 396, haut du site 1080 × 1350). Lien `download`, même origine. `/assets/` est servi `immutable` :
+  **un zip qui change change de nom** (`-1-4-1`…), et la page suit.
+- **Aperçus** : `assets/img/presse-*.webp` (bannière 960 et 1920, quatre captures FR à 240 et 480, icône 192 ;
+  149 Kio en tout). La page pèse 215 Kio à 1440 × 900 et 265 Kio sur iPhone (DPR 3), 15 requêtes, défilée jusqu'en bas.
+- **Refaire** : `python3 outils/preparer-presse.py --site . --kit <Alveo-kit-presse> --banniere <entete-fr-fond.png>
+  --linkedin <dossier des visuels LinkedIn>` (zip déterministe : mêmes sources, même fichier).
 
 ## Mise en ligne des pages légales (une seule fois, dans cet ordre)
 

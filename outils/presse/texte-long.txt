@@ -1,0 +1,11 @@
+Alvéo est une app de respiration guidée pour iPhone et iPad, conçue et développée en France par Pépite Rouge, le studio indépendant fondé par Giovani Bassaya-Virapin.
+
+Une orbe lumineuse rythme le souffle : elle grandit à l’inspiration, se pose à l’expiration. Un mot, un carillon et une vibration marquent chaque phase ; il n’y a pas de voix off et pas de compte à créer. L’orbe est gratuite, de 1 à 15 minutes, sans limite d’usage.
+
+17 séances guidées, en cinq piliers (Apaiser, Dormir, Concentrer, Équilibrer, Énergiser), reposent chacune sur l’un des huit rythmes de respiration de l’app : cohérence cardiaque, cohérence 4-6, respiration carrée, 4-7-8, 4-8, rythme régulier, soupir cyclique et respiration dynamique. Une séance est offerte ; les 16 autres et le programme du soir « 7 soirs pour ralentir » font partie d’Alvéo+, un abonnement mensuel ou annuel. Chaque séance Alvéo+ s’essaie 30 secondes.
+
+La version 1.4.0, sortie le 14 novembre 2026, est une refonte complète : nouvelle interface, séances repensées, Profil refait, VoiceOver qui annonce chaque phase. L’app est en français et en anglais.
+
+La première version est sortie le 30 avril 2026, neuf jours après le début du développement.
+
+Alvéo est un outil de bien-être, pas un dispositif médical.

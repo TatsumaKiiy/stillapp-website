@@ -1,0 +1,22 @@
+Alvéo : kit presse (version 1.4.0, novembre 2026)
+
+Alvéo est une app de respiration guidée pour iPhone et iPad, conçue et développée en France par Pépite Rouge, studio fondé par Giovani Bassaya-Virapin.
+Page presse : https://stillapp.fr/presse
+Contact presse : stillapp.contact@gmail.com
+
+textes/
+  texte-court.txt   pour une newsletter ou un encadré
+  texte-long.txt    pour un article
+  faits.txt         les faits vérifiés (versions, appareils, langues, prix, confidentialité)
+
+visuels/
+  icone-1024x1024.png                          l’icône de l’app
+  captures-app-store-fr/, captures-app-store-en/   les 8 captures iPhone de l’App Store, en français et en anglais (1320 × 2868)
+  banniere-3840x1646.jpg                       l’orbe sur l’horizon, sans texte
+  seances-autour-de-l-orbe-3840x2160.jpg       les images des séances autour de l’orbe, sans texte
+  linkedin/banniere-1584x396.jpg               la bannière LinkedIn, sans texte
+  linkedin/site-stillapp-1080x1350.jpg         le haut du site stillapp.fr, tel qu’il s’affiche
+
+Les captures montrent les vrais écrans de la version 1.4.0, avec une utilisatrice de démonstration fictive (« Camille »).
+
+Alvéo est un outil de bien-être, pas un dispositif médical.
