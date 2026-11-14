@@ -29,7 +29,7 @@ Le site est un unique accueil, plus /mentions-legales, la politique de confident
 ## Capabilities and Constraints
 
 - Vérité absolue : seuls les faits de FICHE_VERITE_PRODUIT.md et CHIFFRES.md ; aucune allégation de santé, d'efficacité ou de science ; aucune fonction non sortie (pas de widget avant la 1.4.1), rien d'« anonyme » ni de « 100 % local ».
-- Destination unique de tous les appels : https://apps.apple.com/app/id6763119413, sans paramètre ni `target`.
+- Destination unique de tous les appels : le lien de campagne App Store du site, `https://apps.apple.com/app/apple-store/id6763119413?pt=<jeton fournisseur>&ct=site&mt=8` (format d'Apple, « Campaign links » d'App Store Connect Analytics : `pt` est le jeton fournisseur du compte, le même pour toutes les campagnes, obtenu en créant une première campagne ; `ct` le nom de la campagne), sans `target`. Le JSON-LD, la bannière Safari et le QR code gardent l'adresse universelle https://apps.apple.com/app/id6763119413.
 - Badge Apple officiel noir français inchangé, ≥ 40 px, zone de protection d'un quart de sa hauteur, jamais deux badges dans une même fenêtre au repos ; crédits Apple/iPhone/iCloud/Safari/App Store/IOS (Cisco) au pied ; `<meta name="apple-itunes-app" content="app-id=6763119413">`.
 - Jamais d'iPhone dessiné : écrans réels de l'app dans des cadres « écran » arrondis ou en pleine image.
 - Budgets : HTML ≤ 60 Ko, CSS ≤ 60 Ko, JS ≤ 45 Ko ; WebP avec srcset et chargement différé hors héros ; Lighthouse mobile ≥ 95 / 100 / 100 / 100, LCP < 2,5 s ; animations sur transform et opacity ; aucune ressource tierce, aucun cookie, aucun stockage.
