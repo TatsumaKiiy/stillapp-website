@@ -105,7 +105,7 @@ d'usage changent (« Avant de prendre la parole », « Avant le sport ») ; écr
 |---|---|
 | © 2026 | pied de `index.html`, `mentions-legales.html`, `confidentialite.html` et `conditions.html` (la 404 a un pied réduit, sans ©) |
 | `lastmod` 2026-11-14 (accueil, mentions légales, confidentialité, conditions : dernier changement de leur contenu, la mise à jour de la 1.4.0 ; le pied des quatre pages dit « pour iPhone et iPad ») | `sitemap.xml` (à mettre à la date de mise en ligne) |
-| Dernière mise à jour : 12 novembre 2026 | `confidentialite.html` et `conditions.html` (`.annexe__maj`) : date du texte vérifié, à changer avec lui |
+| Dernière mise à jour : 14 novembre 2026 (politique : § 6.2 et § 8, effacement de l'identifiant des statistiques depuis la 1.4.0) ; 12 novembre 2026 (conditions) | `confidentialite.html` et `conditions.html` (`.annexe__maj`) : date du texte vérifié, à changer avec lui |
 
 ## Après une modification
 

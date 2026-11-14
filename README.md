@@ -268,7 +268,12 @@ aucune image trop grande sur iPhone (42 Kio avant la taille 660).
 - **Pages légales.** Le texte de `confidentialite.html` et de `conditions.html` a été vérifié ligne à ligne contre le
   code de l'app et sa Privacy Label (dépôt still-legal, commit b80b21c) ; seuls ont changé en les installant ici les
   passages sur l'hébergement de ces pages (§ 3 et § 8 de la politique : Vercel, polices du site, aucun outil de mesure
-  d'audience, et la garantie qui encadre l'adresse IP reçue par Vercel et GitHub) et les liens internes. Ne pas
+  d'audience, et la garantie qui encadre l'adresse IP reçue par Vercel et GitHub) et les liens internes. Le 14 novembre
+  2026 (sortie de la 1.4.0), la politique a reçu la retouche prévue dans `docs/PROCHAIN_BUILD.md` du dépôt de l'app
+  (« Corrections de l'audit ») : « Effacer toutes mes données » efface aussi l'identifiant des statistiques (§ 6.2,
+  vérifié dans `resetAnalytics` et `forgetEarlierPostHogState` de `lib/analytics.ts`, `bcca6a0`), l'identifiant de la
+  1.3.1 effacé au premier choix (§ 8), la 1.4.0 disponible (§ 6.2) ; le reste a été relu contre le Privacy Label
+  (`docs/RELEASE_CHECKLIST_1.4.0.md` § 2) sans écart. Ne pas
   retoucher ce texte sans refaire cette vérification, et changer alors « Dernière mise à jour ». Il vouvoie, comme un
   texte juridique, quand le reste du site tutoie. Les anciennes adresses GitHub Pages
   (`tatsumakiiy.github.io/still-legal/privacy.html`, `terms.html`), que l'app 1.3.1 ouvre encore, redirigent ici dès
