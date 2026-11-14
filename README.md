@@ -24,7 +24,7 @@ la lueur de la pièce suit le souffle, et à la fin l'orbe s'y épanouit sous l'
 
 ```
 index.html              accueil : héros et démo, l'app, l'orbe libre, séances (et le programme), rythmes,
-                        pratique, prix, questions, appel final
+                        pratique, avis, prix, questions, appel final
 mentions-legales.html   servie à /mentions-legales (cleanUrls)
 confidentialite.html    politique de confidentialité de l'app, servie à /confidentialite
 conditions.html         conditions d'utilisation de l'app, servies à /conditions
@@ -66,13 +66,13 @@ outils/                 preparer-images.py : refait les écrans, les rappels, le
   iPhone) : un radial d'une teinte centré 10vw au-dessus du bord du héros, éteint par un masque linéaire sur les 15
   derniers % de la hauteur, et coupé au héros (`.heros__lumiere { overflow: hidden }`) : elle ne passe plus sous la
   section suivante. En fenêtre basse (≤ 31,25rem), la mention sous le badge passe en `texte-1`.
-- **Le ciel de la page** (`.ciel-page`, `position: fixed`, derrière tout le contenu) porte huit couches, une par
+- **Le ciel de la page** (`.ciel-page`, `position: fixed`, derrière tout le contenu) porte neuf couches, une par
   section, chacune **une seule flaque** radiale d'une teinte, cinq arrêts finis sur 0 (aucun plancher : la pièce reste
   sombre) : aube sable (L'app), jour crème (L'orbe libre), soir terracotta (Séances), nuit indigo (Rythmes), nuit
-  froide (Ta pratique), braise (Questions), sable derrière la carte Alvéo+ (Prix), aube revenue (Installer). Sur
+  froide (Ta pratique), braise (Avis, Questions), sable derrière la carte Alvéo+ (Prix), aube revenue (Installer). Sur
   ordinateur, la flaque se tient derrière l'objet de la section, jamais sous la colonne de texte ; sur iPhone, c'est
   une lueur au ras du bas de l'écran. La section qui passe la mi-hauteur s'allume (`.cp--on`, fondu de 600 ms en
-  `cubic-bezier(.23,1,.32,1)`, `@starting-style`), la précédente s'éteint (`.cp--off`) ; les six autres couches ne
+  `cubic-bezier(.23,1,.32,1)`, `@starting-style`), la précédente s'éteint (`.cp--off`) ; les sept autres couches ne
   sont pas rendues (`display: none`), ni leurs animations. Le script n'écrit qu'au changement de section (un
   `IntersectionObserver`) ; rien n'est écrit au défilement. Sans JavaScript, pas de ciel : la page reste lisible sur
   la nuit.
@@ -202,8 +202,9 @@ réduit en direct). Changements :
   1.4.0 a fait une feuille native d'iOS que le banc ne rend pas), feuille « Réglages de séance » ouverte sur
   l'Accueil. **Un seul écran « orbe + Inspire »** sur la page (la séance) : l'orbe n'apparaît pas deux fois à
   l'identique.
-- **Avis** : retirés le 14 novembre 2026 (section `#avis`, ses étoiles et la note) : Apple ne permet de citer un avis
-  qu'avec l'accord de son auteur (« Ratings and reviews », section marketing), non confirmé (voir `CHIFFRES.md`).
+- **Avis** : cinq étoiles en émoji (⭐️, demande du propriétaire) au-dessus de chaque avis et devant la note ;
+  exact, car une moyenne de 5,0 sur 8 notes impose que les huit notes soient de 5 étoiles. Elles sont lues
+  « 5 étoiles sur 5 » par les lecteurs d'écran (`role="img"`) et s'affichent avec la police d'émoji du système.
 - **Volets** (une partie d'écran recadrée, WebP qualité 84) : la carte de la série du Profil (`profil`, 5 jours de
   série, la semaine, « Tu construis ton rituel. » ; elle remplace le calendrier reconstitué), le bas de l'intro d'Avant
   réunion pour un non-abonné (`essai-v2` : « Aperçu gratuit de 30 secondes · séance complète avec Alvéo+ » et
@@ -289,8 +290,8 @@ aucune image trop grande sur iPhone (42 Kio avant la taille 660).
   certification non renouvelée rend la phrase fausse. (L'accord de traitement des données de Vercel, avec ses clauses
   contractuelles types, ne vaut que pour les offres Pro et Enterprise : la phrase ne s'y appuie pas.)
 - **Badge App Store.** `assets/img/badge-app-store-fr.svg` est le badge officiel, copié à l'octet près : ne jamais le
-  modifier. Tant qu'un badge est à l'écran, la pilule de l'en-tête se retire : un seul appel à la fois. Sous les prix,
-  l'appel est un lien texte, jamais un second badge.
+  modifier. Tant qu'un badge est à l'écran, la pilule de l'en-tête se retire : un seul appel à la fois. Après les avis
+  et sous les prix, l'appel est un lien texte, jamais un second badge.
 - **Prix.** La phrase « En France : … » est écrite mot pour mot deux fois (carte Alvéo+ et FAQ 2), nulle part ailleurs
   sur l'accueil ; aucun montant hors de cette phrase (`CHIFFRES.md`). Dans la carte, elle est composée en bloc par des
   `<span>` (« En France : » en libellé, une ligne par montant, unité accolée par des espaces insécables) sans changer un
@@ -304,7 +305,9 @@ aucune image trop grande sur iPhone (42 Kio avant la taille 660).
   statique du détecteur lit toutes les tailles à 16 px.
 - **Détecteur.** Restent deux constats documentés : `overused-font` (charte) et `radial-halo` (la scène de lumière,
   exigence du brief, construite comme une matière : une source, une teinte, grain fichier). Les barres de séance ont
-  une ombre neutre décalée (une ombre colorée sur fond sombre relèverait de `dark-glow`).
+  une ombre neutre décalée (une ombre colorée sur fond sombre relèverait de `dark-glow`). La grande citation des avis
+  (3rem, interlignage 1,16 demandé par la direction artistique) porte `data-impeccable-ignore="tight-leading"` : la
+  règle vise le texte courant, pas une citation d'affichage.
 
 ## Mise en ligne des pages légales (une seule fois, dans cet ordre)
 

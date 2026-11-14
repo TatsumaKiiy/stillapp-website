@@ -29,7 +29,7 @@ color-scheme:dark;
 --t-intro:clamp(1.0625rem,.98rem + .34vw,1.25rem);
 --t-corps:1.0625rem;--t-petit:.9375rem;--t-micro:.8125rem;
 --t-voix:clamp(1.5rem,1.25rem + 1.2vw,2.5rem);
-
+--t-citation:clamp(1.75rem,1.3rem + 1.8vw,3rem);
 --section:clamp(5rem,3rem + 5vw,8rem);
 --mg:max(1.25rem,env(safe-area-inset-left));--md:max(1.25rem,env(safe-area-inset-right));
 --largeur:105rem;--g:1.25rem;--rayon-ecran:clamp(1.125rem,2.8vw,1.875rem);
@@ -125,6 +125,7 @@ button{margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;cu
 .cp--seances{--c:196 112 84;--x:78vw}
 .cp--rythmes{--c:92 108 170;--x:50vw;--a:.5}
 .cp--suivi{--c:96 124 186;--a:.48}
+.cp--avis{--c:204 128 92;--x:24vw}
 .cp--questions{--c:190 110 80;--x:22vw}
 .cp--installer{--x:50vw;--rx:90vw;--a:.48}
 @media (min-width:64rem){
@@ -134,6 +135,7 @@ button{margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;cu
 .cp--seances{--x:86vw;--y:96vh;--rx:40vw}
 .cp--rythmes{--x:60vw;--y:96vh;--rx:54vw;--a:.66}
 .cp--suivi{--x:80vw;--y:60vh;--a:.62}
+.cp--avis{--x:86vw;--y:100vh;--a:.46}
 .cp--prix{--x:76vw;--y:60vh;--rx:40vw;--a:.5}
 .cp--questions{--x:14vw;--y:100vh;--a:.46}
 .cp--installer{--y:108vh;--rx:56vw;--ry:62vh;--a:.62}
@@ -473,6 +475,19 @@ button{margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;cu
 @media (min-width:48rem){.fait{grid-template-columns:14rem minmax(0,1fr);column-gap:2rem}}
 @media (min-width:64rem){.suivi__grille{grid-template-columns:7fr 5fr;column-gap:4rem;align-items:center}.fait{grid-template-columns:1fr}.suivi__scene{width:100%}}
 
+/* LES AVIS */
+.avis__bloc{display:grid;grid-template-columns:minmax(0,1fr);gap:2rem;justify-items:start}
+.citation blockquote p{font-size:var(--t-voix);line-height:1.25;font-family:var(--serif);letter-spacing:-.01em;max-width:24ch;text-wrap:balance}
+.citation--grande blockquote p{font-size:var(--t-citation);line-height:1.16;max-width:22ch}
+.citation figcaption{margin-top:1rem;font-size:var(--t-petit);color:var(--texte-3)}
+.citation--grande{margin-top:1rem}
+.avis__note{font-size:var(--t-corps);color:var(--texte-1)}
+.etoiles{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;font-size:1.25rem;line-height:1;letter-spacing:.12em;margin-bottom:.875rem}
+.etoiles--note{display:inline-block;font-size:1em;letter-spacing:.06em;margin:0 .375rem 0 0;vertical-align:-.08em}
+.avis__appel{margin-top:-1rem}
+.avis__mention{font-size:var(--t-micro);line-height:1.5;color:var(--texte-3);max-width:52ch}
+@media (min-width:64rem){.avis__bloc{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g)}.avis__bloc > .titre{grid-column:1/13}.citation--grande{grid-column:1/8;grid-row:2/5}.citation:not(.citation--grande){grid-column:8/13;grid-row:2;align-self:start;margin-top:1rem}.avis__note{grid-column:8/13;grid-row:3;align-self:end}.avis__appel{grid-column:8/13;grid-row:4;align-self:start;margin-top:0}.avis__mention{grid-column:1/8}}
+
 /* LE PRIX */
 .offres{display:grid;gap:var(--g);margin-top:3rem}
 .offre{position:relative;isolation:isolate;padding:2rem 1.75rem;border-radius:1.75rem;border:1px solid var(--filet);background:linear-gradient(180deg,rgba(var(--blanc),.055),rgba(var(--blanc),.025)),rgba(var(--nuit-rgb),.62);box-shadow:0 28px 70px -30px rgba(var(--noir),.7)}
@@ -567,10 +582,10 @@ button{margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;cu
 @supports (animation-timeline:view()){
 @media (prefers-reduced-motion:no-preference){
 /* ciel ≈ 0,1× */
-html{timeline-scope:--v-app,--v-libre,--v-seances,--v-rythmes,--v-suivi,--v-prix,--v-questions,--v-installer}
-#app{view-timeline:--v-app block}#orbe-libre{view-timeline:--v-libre block}#seances{view-timeline:--v-seances block}#rythmes{view-timeline:--v-rythmes block}#suivi{view-timeline:--v-suivi block}#prix{view-timeline:--v-prix block}#questions{view-timeline:--v-questions block}#installer{view-timeline:--v-installer block}
+html{timeline-scope:--v-app,--v-libre,--v-seances,--v-rythmes,--v-suivi,--v-avis,--v-prix,--v-questions,--v-installer}
+#app{view-timeline:--v-app block}#orbe-libre{view-timeline:--v-libre block}#seances{view-timeline:--v-seances block}#rythmes{view-timeline:--v-rythmes block}#suivi{view-timeline:--v-suivi block}#avis{view-timeline:--v-avis block}#prix{view-timeline:--v-prix block}#questions{view-timeline:--v-questions block}#installer{view-timeline:--v-installer block}
 .cp{animation:ciel-glisse linear both}
-.cp--app{animation-timeline:--v-app}.cp--libre{animation-timeline:--v-libre}.cp--seances{animation-timeline:--v-seances}.cp--rythmes{animation-timeline:--v-rythmes}.cp--suivi{animation-timeline:--v-suivi}.cp--prix{animation-timeline:--v-prix}.cp--questions{animation-timeline:--v-questions}.cp--installer{animation-timeline:--v-installer}
+.cp--app{animation-timeline:--v-app}.cp--libre{animation-timeline:--v-libre}.cp--seances{animation-timeline:--v-seances}.cp--rythmes{animation-timeline:--v-rythmes}.cp--suivi{animation-timeline:--v-suivi}.cp--avis{animation-timeline:--v-avis}.cp--prix{animation-timeline:--v-prix}.cp--questions{animation-timeline:--v-questions}.cp--installer{animation-timeline:--v-installer}
 }
 @media (prefers-reduced-motion:no-preference) and (min-width:64rem){
 .js .heros__orbe{animation:scene-defile linear both;animation-timeline:scroll(root);animation-range:0 100vh}

@@ -88,6 +88,7 @@ colors:
   ciel-seances: "rgb(196 112 84), crête .56, bas à droite (86vw, 96vh)"          # soir terracotta
   ciel-rythmes: "rgb(92 108 170), crête .66, sous les anneaux (60vw, 96vh)"      # nuit indigo
   ciel-suivi: "rgb(96 124 186), crête .62, derrière la carte du Profil (80vw, 60vh)"  # nuit froide
+  ciel-avis: "rgb(204 128 92), crête .46, coin bas droit (86vw, 100vh)"          # braise
   ciel-prix: "rgb(212 144 107), crête .50, derrière la carte Alvéo+ (76vw, 60vh)" # sable
   ciel-questions: "rgb(190 110 80), crête .46, coin bas gauche (14vw, 100vh)"     # braise
   ciel-installer: "rgb(212 144 107), crête .62, sous le soleil levant (50vw, 108vh)" # l'aube revient
@@ -108,12 +109,12 @@ typography:
     "20": "1.25rem"      # intro (haut de plage)
     "22": "1.375rem"     # h3 (bas de plage), nom des cartes, taille mini du mot de l'orbe
     "24": "1.5rem"       # voix (bas), mot-symbole
-    "28": "1.75rem"      # h3 (haut), signature du pied, offres (bas), mot-guide (bas)
+    "28": "1.75rem"      # h3 (haut), citation (bas), signature du pied, offres (bas), mot-guide (bas)
     "34": "2.125rem"     # h2 (bas)
     "36": "2.25rem"      # montants (bas), titre de fin de démo (bas), offres (haut)
     "38": "2.375rem"     # h1 et appel (bas)
     "40": "2.5rem"       # voix (haut), mot-guide (haut)
-    "48": "3rem"         # montants (haut)
+    "48": "3rem"         # citation (haut), montants (haut)
     "60": "3.75rem"      # h2 (haut), titre de fin de démo (haut)
     "72": "4.5rem"       # appel (haut)
     "76": "4.75rem"      # (ancien plafond du h1)
@@ -142,10 +143,10 @@ typography:
     fontFamily: "{typography.serif}"
     fontSize: "clamp(1.375rem, 1.25rem + .5vw, 1.75rem)"
     lineHeight: 1.3
-  voix:                                  # « Continue sur ton iPhone »
+  voix:                                  # citations, « Continue sur ton iPhone »
     fontFamily: "{typography.serif}"
     fontSize: "clamp(1.5rem, 1.25rem + 1.2vw, 2.5rem)"
-    lineHeight: 1.25                     # 1,3 pour l'appel de fin
+    lineHeight: 1.25                     # 1,3 pour l'appel de fin ; la grande citation (3rem) à 1,16
   intro:
     fontFamily: "{typography.sans}"
     fontSize: "clamp(1.0625rem, .98rem + .34vw, 1.25rem)"
@@ -201,7 +202,7 @@ motion:
   parallaxe-ecrans: "séance (milieu) ≈ 0,7× (−34 % → +16 %), accueil (avant) ≈ 0,8× (−16 % → +16 %) sur 22–78 % de la composition ; marge ≥ 20 px dans #app"
 
 components:
-  appel-texte:                           # sous les prix : même destination que le badge, sans second badge
+  appel-texte:                           # après les avis et sous les prix : même destination que le badge, sans second badge
     textColor: "{colors.texte-1}"
     decoration: "souligné sable .6, décalage .3em, flèche SVG d'un trait"
     minHeight: "2.75rem"
@@ -334,7 +335,7 @@ Mouvement réduit : rien ne se déplace, la démo guide par la lumière de l'orb
 - **Pilule d'action** : blanche, texte nuit, 44 px de haut, verbe + objet (« Télécharger Alvéo », « sur l'App Store »
   en plus quand la barre mesure 70em). Elle se retire tant qu'un badge App Store est à l'écran. La navigation est au
   vrai centre de la barre (grille 1fr auto 1fr).
-- **Appel en texte** : « Télécharger Alvéo sur l'App Store » sous les prix, lien souligné de 44 px
+- **Appel en texte** : « Télécharger Alvéo sur l'App Store » après les avis et sous les prix, lien souligné de 44 px
   de haut avec une flèche d'un trait ; jamais un second badge.
 - **Badge App Store** : officiel, inchangé, 48 px (héros) et 60 px (appel final), zone de protection d'un quart de sa
   hauteur par le remplissage de son lien.
