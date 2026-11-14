@@ -5,7 +5,7 @@ Rien n'est codé en dur : chaque source se donne en argument, et seules les
 étapes dont la source est fournie sont exécutées.
 
   python3 outils/preparer-images.py --site .
-      --captures <dossier des captures brutes 1206 × 2622 de l'app>
+      --captures <dossier des écrans bruts de l'app 1.4.0 (voir ECRANS)>
       --rayons                      (rayons de l'orbe, calculés : aucune source)
       --grain                       (grain de la page, calculé : aucune source)
       --icone    <icône de l'app, 1024 × 1024 (assets/icon.png du dépôt de l'app)>
@@ -28,30 +28,38 @@ import sys
 
 from PIL import Image, ImageFilter
 
-# Écrans de l'app : (capture, boîte (x0, y0, x1, y1) sur 1206 × 2622, largeurs publiées).
-# Barre d'état retirée ; le bas s'arrête avant tout texte que la fiche de vérité écarte. Un seul écran « orbe +
-# Inspire » sur la page (la séance) : l'orbe n'apparaît pas deux fois à l'identique.
-# - accueil : coupé au-dessus de la description du programme (« s'endormir plus vite », § 10.2) ;
-# - durée : le sélecteur 1, 2, 5, 10, 15 min, coupé au-dessus de la carte du programme (même raison) ;
-# - calendrier : n'est plus tiré d'une capture ; il est reconstitué d'après le code de l'app 1.4.0, avec des jours
-#   de séance (demande du propriétaire, 8 novembre 2026) : voir outils/calendrier-profil/ ;
-# - essai : le bas de l'intro d'une séance Alvéo+, « Essayer 30 secondes » et « Plus tard », sans le texte
-#   d'introduction ni l'« effet physiologique » (allégations, § 10.2), et sous la pastille de l'aperçu, dont le
-#   libellé est coupé sur la capture (« SÉANCE COMPLÈ… »).
-# Écartés : le premier souffle (« L'orbe suit ton souffle. » : la mesure n'est jamais réutilisée, § 10.1), la séance
-# commandes masquées (doublon de la séance), la fin de séance (« 1 jours de suite »), le paywall (prix en dollars),
-# l'écran entier des rappels (« Choisis jusqu'à 3 moments » : ils sont toujours trois).
-# Les écrans affichés à 72vw sur iPhone ont une taille intermédiaire (660) : 2× d'un iPhone, sans le 880.
+# Écrans de l'app 1.4.0 (build 14, commit bcca6a0 du dépôt de l'app) : (capture, taille attendue, boîte
+# (x0, y0, x1, y1), largeurs publiées). Deux sources, toutes deux rendues depuis le code exact de la 1.4.0 :
+# - les écrans bruts des captures App Store (1320 × 2868, iPhone 6,9 pouces, données de démonstration « Camille ») :
+#   accueil, ambiances-accueil (feuille « Réglages de séance »), fin (séance libre terminée), intro-avant-reunion-apercu
+#   (intro d'une séance Alvéo+ pour un non-abonné), profil ;
+# - le banc de rendu web de l'app (1179 × 2556, iPhone 393 × 852 pt) : lecteur-calme (séance libre, 6 s après le
+#   départ) et rappels-defaut (« Horaires des rappels » aux trois horaires par défaut, 09:00, 13:00, 20:00 : l'écran
+#   « rappels » du banc, état « gratuit », avec des préférences sans `reminderTimes` posées par `stockage` ; l'état
+#   « gratuit » du banc en enregistre deux, 08:30 et 21:45).
+# Barre d'état retirée. Un seul écran « orbe + Inspire » sur la page (la séance). Les écrans de devant et la séance
+# gardent la proportion 1206 × 2180 des versions précédentes ; la fin garde celle de l'ancien écran de durée (le
+# sélecteur de durée de l'Accueil est une feuille native d'iOS, que le banc ne rend pas).
+# - accueil : jusqu'au haut de la carte du programme (« 7 soirs pour ralentir » est sous le bord) ;
+# - fin : « Séance terminée », « Séance libre · Cohérence cardiaque », « 1 min accomplie », « Encore 1 min » ;
+# - reglages : la feuille « Réglages de séance » ouverte sur l'Accueil, jusqu'aux fonds ;
+# - essai : le bas de l'intro d'Avant réunion pour un non-abonné, « Aperçu gratuit de 30 secondes · séance complète
+#   avec Alvéo+ » et « Essayer 30 secondes » ;
+# - rappels : la carte des trois rappels, recadrée à ses bords (rayon 72 px : 6,8 % / 14 % en CSS) ;
+# - profil : la carte de la série du Profil (5 jours de série, la semaine, « Tu construis ton rituel. »).
+# Les fichiers de /assets/ sont servis « immutable » : un écran refait change de nom (-v2, -v3…).
+APP = (1320, 2868)
+BANC = (1179, 2556)
 ECRANS = {
-    "e-accueil": ("08-accueil.png", (0, 130, 1206, 2310), (440, 660, 880)),
-    "e-seance": ("24-seance-chrome-visible.png", (0, 195, 1206, 2375), (440, 660, 880)),
-    "e-duree": ("10-accueil-duree.png", (0, 130, 1206, 2030), (440, 660, 880)),
-    "e-reglages": ("26-seance-feuille-reglages.png", (0, 150, 1206, 2330), (440, 660, 880)),
-    "essai": ("20-seance-intro.png", (0, 2104, 1206, 2452), (480, 960)),
-    # Le seul groupe des trois créneaux de rappel, recadré à ses bords (sans « Choisis jusqu'à 3 moments »).
-    "rappels": ("34-horaires-rappels.png", (60, 797, 1146, 1305), (480, 960)),
+    "e-accueil-v2": ("accueil.png", APP, (0, 150, 1320, 2536), (440, 660, 880)),
+    "e-seance-v2": ("lecteur-calme.png", BANC, (0, 185, 1179, 2316), (440, 660, 880)),
+    "e-fin": ("fin.png", APP, (0, 150, 1320, 2230), (440, 660, 880)),
+    "e-reglages-v2": ("ambiances-accueil.png", APP, (0, 380, 1320, 2766), (440, 660, 880)),
+    "essai-v2": ("intro-avant-reunion-apercu.png", APP, (0, 2330, 1320, 2750), (480, 960)),
+    "rappels-v2": ("rappels-defaut.png", BANC, (60, 574, 1119, 1089), (480, 960)),
+    "profil": ("profil.png", APP, (0, 500, 1320, 1640), (480, 720, 960)),
 }
-VOLETS = ("essai", "rappels")  # calendrier : outils/calendrier-profil/
+VOLETS = ("essai-v2", "rappels-v2", "profil")
 
 # Rayons de l'orbe : seize rayons irréguliers (début, crête, fin en degrés depuis midi, alpha de crête),
 # crème #F0D5BC, masque radial, flou cuit dans le fichier ; immobiles, ils respirent avec l'orbe.
@@ -71,10 +79,10 @@ def trouver(dossier, nom):
 
 
 def ecrans(captures, sortie):
-    for nom, (fichier, boite, largeurs) in ECRANS.items():
+    for nom, (fichier, taille, boite, largeurs) in ECRANS.items():
         im = Image.open(trouver(captures, fichier)).convert("RGB")
-        if im.size != (1206, 2622):
-            sys.exit(f"{nom} : capture de {im.size}, 1206 × 2622 attendu")
+        if im.size != taille:
+            sys.exit(f"{nom} : capture de {im.size}, {taille[0]} × {taille[1]} attendu")
         im = im.crop(boite)
         for largeur in largeurs:
             hauteur = round(im.height * largeur / im.width)

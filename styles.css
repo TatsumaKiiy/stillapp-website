@@ -348,7 +348,7 @@ button{margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;cu
 .app__grille{display:grid;row-gap:3rem}
 .composition,.duo{position:relative;width:min(100%,30rem);margin-inline:auto;aspect-ratio:1/1.5}
 .composition .ecran,.duo .ecran{position:absolute}
-.ecran--accueil,.ecran--duree{left:10%;top:0;width:80%;z-index:2}
+.ecran--accueil,.ecran--fin{left:10%;top:0;width:80%;z-index:2}
 .ecran--seance{left:53%;top:15%;width:58%;z-index:1}
 @media (min-width:64rem){
 .app__grille{grid-template-columns:5fr 7fr;column-gap:4rem;align-items:center}
@@ -357,12 +357,13 @@ button{margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;cu
 .ecran--seance{left:45%;top:19%;width:41%}
 }
 
-/* L'ORBE LIBRE */
+/* L'ORBE LIBRE : sous 64rem, les réglages de séance seuls (le bord droit de la fin porterait du texte) */
 .libre__grille{display:grid;row-gap:3rem}
-.duo{aspect-ratio:1/1.37}
-.ecran--reglages{left:48%;top:13%;width:58%;z-index:1}
+.duo{aspect-ratio:1/1.45}
+.duo .ecran--fin{display:none}
+.ecran--reglages{left:10%;top:0;width:80%;z-index:2}
 .duo .ecran::before{--lh:var(--sable-clair)}
-@media (min-width:64rem){.libre__grille{grid-template-columns:7fr 5fr;column-gap:4rem;align-items:center}.libre__textes{order:2}.duo{order:1;width:100%;aspect-ratio:1/.86}.ecran--duree{left:3%;top:7%;width:47%;z-index:1}.ecran--reglages{left:46%;top:13%;width:41%;z-index:2}}
+@media (min-width:64rem){.libre__grille{grid-template-columns:7fr 5fr;column-gap:4rem;align-items:center}.libre__textes{order:2}.duo{order:1;width:100%;aspect-ratio:1/.86}.duo .ecran--fin{display:block;left:3%;top:7%;width:47%;z-index:1}.ecran--reglages{left:46%;top:13%;width:41%;z-index:2}}
 
 /* LES SÉANCES : une carte par pilier, une barre par séance (longueur = durée, motif = rythme) */
 .seances__grille{display:grid;grid-template-columns:minmax(0,1fr)}
@@ -467,10 +468,10 @@ button{margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;cu
 .volet::before{content:"";position:absolute;z-index:-1;inset:-34% -24%;background:radial-gradient(closest-side,rgba(var(--lh),.3),rgba(var(--lh),.19) 26%,rgba(var(--lh),.09) 52%,rgba(var(--lh),.025) 78%,transparent)}
 .volet img{width:100%;border-radius:var(--rayon-ecran);outline:1px solid rgba(var(--ivoire),.09);outline-offset:-1px;box-shadow:0 30px 60px -24px rgba(var(--noir),.8),0 10px 24px -12px rgba(var(--noir),.55);background:#0E0D11}
 .volet::after{content:"";position:absolute;inset:0;border-radius:var(--rayon-ecran);background:linear-gradient(165deg,rgba(var(--ivoire),.1) 0%,rgba(var(--ivoire),.03) 22%,transparent 45%);pointer-events:none}
-.volet--calendrier{--lh:96,124,186;width:90%}
-.volet--rappels{z-index:2;justify-self:end;width:76%;margin-top:-15%}
+.volet--profil{--lh:96,124,186;width:90%}
+.volet--rappels{z-index:2;justify-self:end;width:76%;margin-top:-1%}
 .volet--rappels::before{inset:-70% -30%}
-.volet--rappels img,.volet--rappels::after{border-radius:5.25%/11.2%}
+.volet--rappels img,.volet--rappels::after{border-radius:6.8%/14%}
 @media (min-width:48rem){.fait{grid-template-columns:14rem minmax(0,1fr);column-gap:2rem}}
 @media (min-width:64rem){.suivi__grille{grid-template-columns:7fr 5fr;column-gap:4rem;align-items:center}.fait{grid-template-columns:1fr}.suivi__scene{width:100%}}
 

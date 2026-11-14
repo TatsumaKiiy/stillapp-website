@@ -87,7 +87,7 @@ colors:
   ciel-libre: "rgb(238 208 182), crête .46, derrière les écrans (26vw, 58vh)"    # jour crème
   ciel-seances: "rgb(196 112 84), crête .56, bas à droite (86vw, 96vh)"          # soir terracotta
   ciel-rythmes: "rgb(92 108 170), crête .66, sous les anneaux (60vw, 96vh)"      # nuit indigo
-  ciel-suivi: "rgb(96 124 186), crête .62, derrière le calendrier (80vw, 60vh)"  # nuit froide
+  ciel-suivi: "rgb(96 124 186), crête .62, derrière la carte du Profil (80vw, 60vh)"  # nuit froide
   ciel-avis: "rgb(204 128 92), crête .46, coin bas droit (86vw, 100vh)"          # braise
   ciel-prix: "rgb(212 144 107), crête .50, derrière la carte Alvéo+ (76vw, 60vh)" # sable
   ciel-questions: "rgb(190 110 80), crête .46, coin bas gauche (14vw, 100vh)"     # braise
@@ -245,11 +245,11 @@ components:
     rounded: "{rounded.offre}"
   offre-plus:
     border: "dégradé crème → sable de 1 px (masque), lueur de coin sable"
-  volet:                                 # une partie d'écran recadrée (calendrier, essai, rappels)
-    rounded: "{rounded.ecran} ; rappels : 5.25%/11.2% (le rayon réel du groupe)"
+  volet:                                 # une partie d'écran recadrée (carte du Profil, essai, rappels)
+    rounded: "{rounded.ecran} ; rappels : 6.8%/14% (le rayon réel de la carte, 72 px sur 1059 × 515)"
     shadow: "0 30px 60px -24px rgba(0,0,0,.8), 0 10px 24px -12px rgba(0,0,0,.55)"
   ecran:
-    proportion: "1206 × 2180 (1:1,81), barre d'état retirée ; la durée 1206 × 1900, coupée au-dessus du programme"
+    proportion: "1206 × 2180 (1:1,81), barre d'état retirée ; la fin d'une séance 1206 × 1900"
     rounded: "{rounded.ecran}"
     shadow: "0 28px 70px -18px rgba(0,0,0,.65), 0 8px 20px -10px rgba(0,0,0,.5)"
     reflet: "linear-gradient(160deg, crème .13, .045 16 %, transparent 38 %)"
@@ -354,8 +354,8 @@ Mouvement réduit : rien ne se déplace, la démo guide par la lumière de l'orb
   80vw, la suivante visible au bord, focusable au clavier quand elle déborde) ; 3 colonnes de 64 à 80rem ; 5 au-delà.
 - **Programme** : la dernière carte, à la teinte du pilier Dormir : sept points (une séance par jour), nom en serif,
   « avec Alvéo+ » ; pleine largeur sous les cinq piliers dès 80rem.
-- **Volet** : une partie d'écran recadrée à ses bords (le calendrier du Profil, le bas de l'intro d'une séance, les
-  rappels), même cadre, ombre et reflet que les écrans.
+- **Volet** : une partie d'écran recadrée à ses bords (la carte de la série du Profil, le bas de l'intro d'une séance,
+  les rappels), même cadre, ombre et reflet que les écrans.
 - **Anneau de rythme** : SVG, piste fine, arcs inspire (crème), retenue (crème 32 %), « un peu plus » (sable), expire
   (terracotta), aiguille, orbe miniature qui respire.
 - **Offres** : deux cartes de verre ; Alvéo+ porte un bord lumineux crème → sable et une lueur de coin. Le prix

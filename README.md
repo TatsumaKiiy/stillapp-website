@@ -39,8 +39,8 @@ robots.txt, sitemap.xml
 favicon.ico, icon.svg, apple-touch-icon.png   inchangés
 og.jpg                  image de partage 1200 × 630 : le héros réel, capturé (voir « Images »)
 assets/fonts/           Instrument Serif et Inter (WOFF2, sous-ensembles latins) et leurs licences OFL, inchangés
-assets/img/             badge officiel Apple et QR code (inchangés), icône, écrans de l'app (e-accueil, e-seance,
-                        e-duree, e-reglages : 440, 660 et 880 px), volets (calendrier, essai, rappels), rayons de
+assets/img/             badge officiel Apple et QR code (inchangés), icône, écrans de l'app 1.4.0 (e-accueil-v2,
+                        e-seance-v2, e-fin, e-reglages-v2 : 440, 660 et 880 px), volets (profil, essai-v2, rappels-v2), rayons de
                         l'orbe (rayons-orbe-v2.webp), grain.png
 outils/                 preparer-images.py : refait les écrans, les rappels, les rayons et le grain (non publié)
 ```
@@ -160,9 +160,10 @@ plages). Tout est coupé sous `prefers-reduced-motion: reduce`. Aucun texte ni a
   pages annexes ne dépasse pas 20 % de la largeur de la colonne (`cqi`), pour que « confidentialité » tienne sur une
   ligne ; au texte normal, rien ne change dès 210 px de large.
 - **Écrans sur iPhone et tablette** (sous 64rem) : l'écran de devant fait 80 % de la composition (≈ 72vw sur iPhone) ;
-  de l'écran arrière ne dépasse que son bord droit, choisi sans texte (l'orbe, la croix et les réglages de la séance ;
-  « Off » et « Minuit » des réglages, en entier), coupé au bord de la fenêtre (`overflow-x: clip`). Vérifié à 320,
-  375, 390 et 820 px.
+  de l'écran arrière ne dépasse que son bord droit, choisi sans texte (l'orbe, la croix et les réglages de la séance),
+  coupé au bord de la fenêtre (`overflow-x: clip`). Dans #orbe-libre, la feuille « Réglages de séance » de la 1.4.0
+  porte du texte jusqu'à son bord droit, de même que l'écran de fin : sous 64rem, la feuille s'y montre seule, devant
+  (l'écran de fin n'apparaît que dès 64rem). Vérifié à 390 et 1440 px (recette du 14 novembre 2026).
 - **Séances** : sous 64rem, une bande à faire glisser au doigt (`scroll-snap`, cartes de `min(80vw, 21rem)`, la
   suivante visible au bord ; le script la rend focusable au clavier quand elle déborde) ; 3 colonnes de 64 à 80rem
   (le programme en sixième carte), 5 au-delà avec le programme en pleine largeur.
@@ -191,26 +192,29 @@ réduit en direct). Changements :
 
 ## Images
 
-- **Écrans de l'app** : captures Simulateur du 2 novembre (1206 × 2622), barre d'état retirée, WebP qualité 82 à 440,
-  660 et 880 px de large (`e-*.webp` ; le 660 sert les écrans de devant sur iPhone) : accueil (08, coupé au-dessus de
-  la description du programme, 1206 × 2180), séance (24, 1206 × 2180), durée (10 : le sélecteur 1, 2, 5, 10, 15 min,
-  coupé au-dessus de la carte du programme, 1206 × 1900), réglages en séance (26, 1206 × 2180). **Un seul écran
-  « orbe + Inspire »** sur la page (la séance) : l'orbe n'apparaît pas deux fois à l'identique.
+- **Écrans de l'app 1.4.0** (mis à jour le 14 novembre 2026, jour de sa sortie) : rendus depuis le code exact du
+  build 14 (`bcca6a0`), avec les données de démonstration des captures App Store (« Camille », 5 jours de série) :
+  les écrans bruts de ces captures (1320 × 2868) et, pour la séance et les rappels, le banc de rendu web de l'app
+  (1179 × 2556). Barre d'état retirée, WebP qualité 82 à 440, 660 et 880 px de large (`e-*-v2.webp`, `e-fin` ; le 660
+  sert les écrans de devant sur iPhone) : accueil (« Prends 1 minute. », jusqu'au haut de la carte du programme,
+  proportion 1206 × 2180), séance libre 6 s après le toucher (00:58, « Inspire », commandes visibles), fin d'une
+  séance libre (« Séance terminée », « Encore 1 min » ; proportion 1206 × 1900 de l'ancien écran de durée, dont la
+  1.4.0 a fait une feuille native d'iOS que le banc ne rend pas), feuille « Réglages de séance » ouverte sur
+  l'Accueil. **Un seul écran « orbe + Inspire »** sur la page (la séance) : l'orbe n'apparaît pas deux fois à
+  l'identique.
 - **Avis** : cinq étoiles en émoji (⭐️, demande du propriétaire) au-dessus de chaque avis et devant la note ;
   exact, car une moyenne de 5,0 sur 8 notes impose que les huit notes soient de 5 étoiles. Elles sont lues
   « 5 étoiles sur 5 » par les lecteurs d'écran (`role="img"`) et s'affichent avec la police d'émoji du système.
-- **Volets** (une partie d'écran recadrée, WebP qualité 84) : le calendrier du Profil (image reconstituée d'après le code de
-  l'app 1.4.0, avec quinze jours de séance d'illustration : `outils/calendrier-profil/`), le bas de l'intro
-  d'une séance Alvéo+ (20 : « Essayer 30 secondes », « Plus tard », sans le texte d'introduction ni l'« effet
-  physiologique », allégations, et sous la pastille de l'aperçu, dont le libellé est coupé sur la capture), les
-  rappels (34, le seul groupe des trois créneaux : l'écran entier porte « Choisis jusqu'à 3 moments », écart de texte
-  relevé par la fiche de vérité).
-- **Écartés** : le premier souffle (« L'orbe suit ton souffle. » : la mesure n'est jamais réutilisée, § 10.1 de la
-  fiche de vérité), la séance commandes masquées (doublon de la séance), le profil avec ses trois jalons (sept dans la
-  1.4.0), la fin de séance (« 1 jours de suite »), le paywall et la fin d'aperçu (allégations, prix en dollars), les
-  suggestions de l'accueil (Double Inspire n'y est pas épinglée, alors qu'elle l'est pour un non-abonné dans les deux
-  versions), la liste des séances (non chargée sur les captures). `outils/preparer-images.py --captures …` les refait
-  à l'identique. Aucun iPhone dessiné : cadres « écran » arrondis, ombre douce décalée, reflet, lueur derrière.
+- **Volets** (une partie d'écran recadrée, WebP qualité 84) : la carte de la série du Profil (`profil`, 5 jours de
+  série, la semaine, « Tu construis ton rituel. » ; elle remplace le calendrier reconstitué), le bas de l'intro d'Avant
+  réunion pour un non-abonné (`essai-v2` : « Aperçu gratuit de 30 secondes · séance complète avec Alvéo+ » et
+  « Essayer 30 secondes » ; « Plus tard » n'existe plus), les trois rappels aux horaires par défaut (`rappels-v2`,
+  09:00, 13:00, 20:00, la carte recadrée à ses bords ; l'état « gratuit » du banc n'en garde que deux, d'où un état
+  dédié, `rappels-defaut`, aux préférences du banc sans horaires enregistrés).
+- **Écartés** : le paywall et la fin d'aperçu (prix, offre), l'intro d'une séance en entier (textes longs, illisibles
+  à cette taille), la liste des séances (doublon des cartes de pilier du site), le lecteur d'une séance Alvéo+ (un
+  second « orbe + Inspire »). Les sources et les boîtes de recadrage sont dans `outils/preparer-images.py` (`ECRANS`) ;
+  `outils/preparer-images.py --site . --captures <dossier des écrans bruts>` les refait à l'identique. Aucun iPhone dessiné : cadres « écran » arrondis, ombre douce décalée, reflet, lueur derrière.
 - `rayons-orbe-v2.webp` : `outils/preparer-images.py --rayons` (aucune source : calculé, gain 3,9).
 - `og.jpg` : capture Playwright du héros à 1200 × 630, prise à 2× puis réduite, avec le seul titre et l'orbe (lisibles
   dans une carte de partage d'environ 500 px : navigation, chapô, badge, mention et consignes retirés pour la capture),
