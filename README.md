@@ -1,6 +1,6 @@
 # stillapp.fr, version « Lumière »
 
-Site d'**Alvéo**, l'app de respiration guidée pour iPhone ([App Store](https://apps.apple.com/app/id6763119413)).
+Site d'**Alvéo**, l'app de respiration guidée pour iPhone et iPad ([App Store](https://apps.apple.com/app/id6763119413)).
 Une page d'accueil, les mentions légales, la politique de confidentialité et les conditions d'utilisation de l'app,
 et une page 404.
 
@@ -324,6 +324,6 @@ Pour les en-têtes réels (CSP, URL sans `.html`, 404) : `npx vercel dev`, ou le
 ## Règles de vérité
 
 Chaque fait publié est vrai dans la version de l'app en ligne **et** dans la suivante : aucune fonction absente (pas de
-widget, pas d'iPad), aucune allégation de santé ou d'efficacité, aucune caution scientifique (pas d'étude citée),
+widget avant la 1.4.1), aucune allégation de santé ou d'efficacité, aucune caution scientifique (pas d'étude citée),
 rien d'« anonyme » ni de « 100 % local ». Les chiffres sont recensés avec leur source et leurs emplacements dans
 `CHIFFRES.md`.

@@ -16,7 +16,7 @@ Adultes francophones pressés, qui n'ont « pas le temps de méditer » : une mi
 
 ## Product Purpose
 
-Alvéo est une app iPhone de respiration guidée, faite en France par un développeur indépendant. Une orbe lumineuse rythme le souffle, un mot l'accompagne, un carillon et une vibration marquent chaque phase ; aucune voix. L'orbe libre est gratuite (1, 2, 5, 10 ou 15 minutes, rythme 5-5). 17 séances guidées de 1 à 15 minutes, en cinq piliers, dont Double Inspire offerte et 16 dans Alvéo+. Le site réussit quand un visiteur ouvre la fiche App Store (https://apps.apple.com/app/id6763119413) après avoir compris, et idéalement essayé, l'orbe.
+Alvéo est une app de respiration guidée pour iPhone et iPad, faite en France par un développeur indépendant. Une orbe lumineuse rythme le souffle, un mot l'accompagne, un carillon et une vibration marquent chaque phase ; aucune voix. L'orbe libre est gratuite (1, 2, 5, 10 ou 15 minutes, rythme 5-5). 17 séances guidées de 1 à 15 minutes, en cinq piliers, dont Double Inspire offerte et 16 dans Alvéo+. Le site réussit quand un visiteur ouvre la fiche App Store (https://apps.apple.com/app/id6763119413) après avoir compris, et idéalement essayé, l'orbe.
 
 ## Positioning
 
@@ -28,13 +28,13 @@ Le site est un unique accueil, plus /mentions-legales, la politique de confident
 
 ## Capabilities and Constraints
 
-- Vérité absolue : seuls les faits de FICHE_VERITE_PRODUIT.md et CHIFFRES.md ; aucune allégation de santé, d'efficacité ou de science ; aucune fonction de la 1.4.0 non sortie (pas de widget), rien d'« anonyme » ni de « 100 % local ».
+- Vérité absolue : seuls les faits de FICHE_VERITE_PRODUIT.md et CHIFFRES.md ; aucune allégation de santé, d'efficacité ou de science ; aucune fonction non sortie (pas de widget avant la 1.4.1), rien d'« anonyme » ni de « 100 % local ».
 - Destination unique de tous les appels : https://apps.apple.com/app/id6763119413, sans paramètre ni `target`.
 - Badge Apple officiel noir français inchangé, ≥ 40 px, zone de protection d'un quart de sa hauteur, jamais deux badges dans une même fenêtre au repos ; crédits Apple/iPhone/iCloud/Safari/App Store/IOS (Cisco) au pied ; `<meta name="apple-itunes-app" content="app-id=6763119413">`.
 - Jamais d'iPhone dessiné : écrans réels de l'app dans des cadres « écran » arrondis ou en pleine image.
 - Budgets : HTML ≤ 60 Ko, CSS ≤ 60 Ko, JS ≤ 45 Ko ; WebP avec srcset et chargement différé hors héros ; Lighthouse mobile ≥ 95 / 100 / 100 / 100, LCP < 2,5 s ; animations sur transform et opacity ; aucune ressource tierce, aucun cookie, aucun stockage.
-- Prix : « En France : 4,99 € par mois ou 29,99 € par an (soit 2,49 € par mois), TTC. Ailleurs, le prix s'affiche dans ta devise sur l'App Store. » Essai sur l'annuelle seulement, pour un premier abonnement, selon l'éligibilité décidée par Apple, durée affichée par Apple (jamais écrite).
-- Non décidé côté produit (hors site) : iPad, widget, calendrier de la 1.4.0. Le site s'en tient à « pour iPhone ».
+- Prix : « En France : 4,99 € par mois ou 29,99 € par an (soit 2,50 € par mois), TTC. Ailleurs, le prix s'affiche dans ta devise sur l'App Store. » Essai sur l'annuelle seulement, pour un premier abonnement, selon l'éligibilité décidée par Apple, durée affichée par Apple (jamais écrite).
+- La 1.4.0 est en ligne depuis le 14 novembre 2026 (build 14, `bcca6a0`). L'iPad est pris en charge (déjà dans la 1.3.1) : le site dit « pour iPhone et iPad », sauf le h1, qui reste « pour iPhone ». Le widget arrive en 1.4.1 : rien à en dire avant sa sortie.
 
 ## Brand Commitments
 
@@ -43,7 +43,7 @@ Nom « Alvéo » (orbe féminine, « Alvéo+ »), tutoiement, phrases courtes, t
 ## Evidence on Hand
 
 - Captures brutes de l'app (iPhone, 1206 × 2622) : `/tmp/claude-0/-home-user-still-app/e6563af3-5f09-5092-b161-f8389c8deb58/scratchpad/shots-v2-dl/shots/`. Écrans publiés, entiers et tous à la même proportion (1206 × 2180, barre d'état retirée) : 06 premier souffle, 08 accueil (coupé au-dessus de la description du programme, qui promet « s'endormir plus vite »), 23 séance commandes masquées, 24 séance, 26 réglages en séance, 18 profil (calendrier et jalons) ; plus le groupe des trois rappels de 34, recadré à ses bords (l'écran entier porte « Choisis jusqu'à 3 moments », écart de texte relevé par la fiche). Écartés : 27 fin de séance (« 1 min accomplie » sur Relâcher, « 1 jours de suite »), 10 durée (même fond et même titre que l'accueil), 20 et 39 intro de séance, 29 à 31 paywall et aperçu (allégations, prix en dollars, « 7 jours offerts »), 05 rappels de la prise en main (« 3x plus régulièrement »), 13 et 37 liste des séances (non chargée), 32 et 33 réglages (« 7 jours offerts », « anonymes »), les captures « dyn » (texte agrandi).
-- Note App Store : 5,0 sur 5 · 8 notes · App Store France · relevé le 4 novembre 2026. Deux avis cités mot pour mot : Rose88rjkg (19 mai 2026) et Wario513 (21 mai 2026).
+- Note App Store : 5,0 sur 5 · 8 notes · App Store France · relevé le 14 novembre 2026. Deux avis cités mot pour mot : Rose88rjkg (19 mai 2026) et Wario513 (21 mai 2026).
 - Absences à ne jamais combler : aucun article de presse, aucun chiffre d'utilisateurs, aucun autre témoignage, aucune durée d'essai vérifiée.
 
 ## Product Principles

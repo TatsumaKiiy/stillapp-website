@@ -381,7 +381,7 @@ button{margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;cu
 .barre__rythme{position:absolute;inset:0;width:100%;height:100%}
 .symboles pattern path{fill:none;stroke:#FFF4EA;stroke-opacity:.66;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .seance__duree{font-size:var(--t-petit);line-height:1.2;color:var(--texte-2);white-space:nowrap}
-.t1{--d:1}.t2{--d:2}.t3{--d:3}.t5{--d:5}.t8{--d:8}.t10{--d:10}.t15{--d:15}
+.t1{--d:1}.t2{--d:2}.t3{--d:3}.t5{--d:5}.t10{--d:10}.t15{--d:15}
 .pilier--apaiser{--hue:122,90,128;--nom:var(--n-apaiser);--i:1}
 .pilier--dormir,.programme{--hue:61,74,122;--nom:var(--n-dormir)}
 .pilier--dormir{--i:2}
@@ -402,7 +402,7 @@ button{margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;cu
 }
 @media (min-width:80rem){.piliers{grid-template-columns:repeat(5,minmax(0,1fr))}.programme{grid-column:1/-1;grid-template-columns:auto auto minmax(0,1fr);align-items:center;column-gap:1.75rem;padding-block:1.25rem}.programme .courbe{margin:0}.programme__detail{margin:0}}
 
-/* LES RYTHMES : six anneaux au vrai tempo */
+/* LES RYTHMES : huit anneaux au vrai tempo */
 .rythmes__tete{display:grid;gap:1.5rem;align-items:end}
 @media (min-width:64rem){.rythmes__tete{grid-template-columns:minmax(0,1fr) auto}}
 .pause-anneaux{display:inline-flex;align-items:center;gap:.625rem;min-height:2.75rem;padding:0 1.125rem 0 .875rem;border-radius:999px;border:1px solid var(--filet-fort);color:var(--texte-2);font-size:var(--t-petit);justify-self:start;transition:background-color var(--dp) ease,color var(--dp) ease,transform var(--dp) var(--cs)}
@@ -412,9 +412,9 @@ button{margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;cu
 .pause-anneaux[aria-pressed=true] .ico__pause{display:none}
 .pause-anneaux[aria-pressed=true] .ico__lecture{display:block}
 .anneaux{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3rem var(--g);margin-top:3.5rem}
-@media (min-width:48rem){.anneaux{grid-template-columns:repeat(3,minmax(0,1fr));gap:4rem var(--g)}}
+@media (min-width:48rem){.anneaux{gap:4rem var(--g)}}
 @media (min-width:64rem){.anneaux{margin-top:4.5rem}}
-@media (min-width:80rem){.anneaux{grid-template-columns:repeat(6,minmax(0,1fr))}.anneau{width:10rem}}
+@media (min-width:64rem){.anneaux{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .rythme{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
 .anneau{position:relative;isolation:isolate;width:clamp(8.5rem,22vw,11.5rem);aspect-ratio:1;margin-bottom:1.5rem}
 .anneau::before{content:"";position:absolute;z-index:-1;inset:-30%;background:radial-gradient(closest-side,rgba(var(--sable),.17) 0%,rgba(var(--sable),.1) 34%,rgba(var(--sable),.04) 62%,rgba(var(--sable),.01) 84%,transparent 100%)}
@@ -441,6 +441,8 @@ button{margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;cu
 .anneaux--vivants .rythme--2i .souffle{animation-name:r2i;animation-duration:12s}.anneaux--vivants .rythme--2i .aiguille{animation-duration:12s}
 .anneaux--vivants .rythme--48 .souffle{animation-name:r48;animation-duration:12s}.anneaux--vivants .rythme--48 .aiguille{animation-duration:12s}
 .anneaux--vivants .rythme--44 .souffle{animation-name:r44;animation-duration:8s}.anneaux--vivants .rythme--44 .aiguille{animation-duration:8s}
+.anneaux--vivants .rythme--46 .souffle{animation-name:r46}
+.anneaux--vivants .rythme--42 .souffle{animation-name:r42;animation-duration:6s}.anneaux--vivants .rythme--42 .aiguille{animation-duration:6s}
 .anneaux--figes .souffle,.anneaux--figes .aiguille{animation-play-state:paused}
 }
 @keyframes r55{0%,100%{transform:scale(.6)}50%{transform:scale(1)}}
@@ -449,6 +451,8 @@ button{margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;cu
 @keyframes r2i{0%,100%{transform:scale(.6)}33.33%{transform:scale(.9)}50%{transform:scale(1)}}
 @keyframes r48{0%,100%{transform:scale(.6)}33.33%{transform:scale(1)}}
 @keyframes r44{0%,100%{transform:scale(.6)}50%{transform:scale(1)}}
+@keyframes r46{0%,100%{transform:scale(.6)}40%{transform:scale(1)}}
+@keyframes r42{0%,100%{transform:scale(.6)}66.67%{transform:scale(1)}}
 @keyframes tour{to{transform:rotate(360deg)}}
 
 /* TA PRATIQUE */

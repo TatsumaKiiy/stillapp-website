@@ -206,7 +206,7 @@ components:
     textColor: "{colors.texte-1}"
     decoration: "souligné sable .6, décalage .3em, flèche SVG d'un trait"
     minHeight: "2.75rem"
-  programme:                             # « 7 jours pour mieux dormir » : dernière carte de la bande, pleine largeur dès 80rem
+  programme:                             # « 7 soirs pour ralentir » : dernière carte de la bande, pleine largeur dès 80rem
     background: "linear-gradient(165deg, teinte .36, teinte .10 55%, blanc .015) sur nuit .66"
     rounded: "{rounded.carte}"
   pilule:
