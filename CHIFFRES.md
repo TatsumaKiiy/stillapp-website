@@ -83,19 +83,19 @@ d'usage changent (« Avant de prendre la parole », « Avant le sport ») ; écr
 | Résiliation au moins 24 h avant la fin de la période | `locales/fr/paywall.json:49-52` | second `.offre__conditions` ; FAQ 4 |
 | Prix de l'offre dans le JSON-LD (`"price": "0"`, `EUR`) | téléchargement gratuit | JSON-LD (`offers`) |
 
-## Note et avis (à mettre à jour à chaque relevé, ou à retirer si la note baisse sans mise à jour)
+## Note et avis
 
-| Chiffre | Source | Emplacements |
-|---|---|---|
-| 5,0 sur 5 · 8 notes · App Store France · relevé le 14 novembre 2026 (API de recherche d'Apple, `itunes.apple.com/lookup?id=6763119413&country=fr` : `averageUserRating` 5, `userRatingCount` 8, version 1.4.0) | fiche App Store France | `#avis .avis__note` (un seul paragraphe). Jamais dans le héros ni dans le JSON-LD |
-| Avis de Rose88rjkg, 19 mai 2026, cité mot pour mot avec « […] » | flux d'avis France | `#avis .citation--grande` |
-| Avis de Wario513, 21 mai 2026, extrait mot pour mot | flux d'avis France (20 mai 17 h 28 heure du Pacifique, soit le 21 mai à Paris) | `#avis .citation` (la seconde) |
+Aucun avis ni note sur le site depuis le 14 novembre 2026 : Apple n'autorise la citation d'un avis qu'avec
+l'accord de son auteur (« Customer reviews may be used in marketing materials only if permission from the reviewer is
+granted », developer.apple.com/app-store/ratings-and-reviews/), accord que le propriétaire n'a pas confirmé. La
+section `#avis` (deux avis, Rose88rjkg et Wario513, et la note 5,0 sur 5 · 8 notes) est retirée avec sa couche de ciel.
+La note seule peut revenir si elle reflète la note actuelle (même page d'Apple) : la relever le jour même.
 
 ## App Store et compatibilité
 
 | Chiffre | Source | Emplacements |
 |---|---|---|
-| Identifiant App Store 6763119413 ; liens de campagne `https://apps.apple.com/app/apple-store/id6763119413?pt=JETON_FOURNISSEUR&amp;ct=site&amp;mt=8` (depuis le 14 novembre 2026 ; `JETON_FOURNISSEUR` est à remplacer par le jeton `pt` d'App Store Connect avant la mise en ligne : `grep -rl JETON_FOURNISSEUR *.html`) | App Store Connect (Analytics › Acquisition › Campaigns) | `<meta name="apple-itunes-app">`, JSON-LD (`installUrl`, `sameAs`) et QR : adresse universelle, sans campagne ; liens de campagne : les sept liens de l'accueil (pilule de l'en-tête, badge du héros, badge de fin de démo `.badge--fin`, appel `#avis .avis__appel`, appel `#prix .prix__appel`, badge de `#installer`, lien du pied) ; QR (`assets/img/qr-app-store.svg`, à régénérer si l'adresse change) ; `mentions-legales.html`, `confidentialite.html` et `conditions.html` (pilule, pied) ; `404.html` (pilule, lien, pied) |
+| Identifiant App Store 6763119413 ; liens de campagne `https://apps.apple.com/app/apple-store/id6763119413?pt=JETON_FOURNISSEUR&amp;ct=site&amp;mt=8` (depuis le 14 novembre 2026 ; `JETON_FOURNISSEUR` est à remplacer par le jeton `pt` d'App Store Connect avant la mise en ligne : `grep -rl JETON_FOURNISSEUR *.html`) | App Store Connect (Analytics › Acquisition › Campaigns) | `<meta name="apple-itunes-app">`, JSON-LD (`installUrl`, `sameAs`) et QR : adresse universelle, sans campagne ; liens de campagne : les six liens de l'accueil (pilule de l'en-tête, badge du héros, badge de fin de démo `.badge--fin`, appel `#prix .prix__appel`, badge de `#installer`, lien du pied) ; QR (`assets/img/qr-app-store.svg`, à régénérer si l'adresse change) ; `mentions-legales.html`, `confidentialite.html` et `conditions.html` (pilule, pied) ; `404.html` (pilule, lien, pied) |
 | iOS (et iPadOS) 15.1 ou plus récent | fiche App Store (`minimumOsVersion` 15.1, relevé le 14 novembre 2026) | JSON-LD (`operatingSystem`) ; `#installer .intro` ; FAQ 6 ; ligne Cisco du crédit des marques (pied) |
 | Pour iPhone et iPad (l'app accepte l'iPad depuis la 1.3.1 : `supportsTablet: true`, `app.json:17` ; fiche App Store : appareils iPad listés) ; pas d'Android ; français et anglais | fiche App Store ; `app.json` | `<title>`, meta description, `og:description`, JSON-LD ; `.heros__mention` ; `#installer` ; FAQ 6 ; pied des quatre pages (« pour iPhone et iPad »). Le h1 et `og:title` (« pour iPhone ») ne changent pas : l'image de partage les reproduit |
 

@@ -43,7 +43,7 @@ Nom « Alvéo » (orbe féminine, « Alvéo+ »), tutoiement, phrases courtes, t
 ## Evidence on Hand
 
 - Écrans de l'app 1.4.0 (14 novembre 2026), rendus depuis le code du build 14 (`bcca6a0`) avec les données de démonstration des captures App Store (« Camille ») : accueil, séance libre en cours, fin d'une séance libre, feuille « Réglages de séance », bas de l'intro d'une séance Alvéo+ (« Essayer 30 secondes »), carte de la série du Profil, trois rappels aux horaires par défaut. Sources et recadrages : `outils/preparer-images.py` et README, « Images ».
-- Note App Store : 5,0 sur 5 · 8 notes · App Store France · relevé le 14 novembre 2026. Deux avis cités mot pour mot : Rose88rjkg (19 mai 2026) et Wario513 (21 mai 2026).
+- Note App Store : 5,0 sur 5 · 8 notes · App Store France · relevé le 14 novembre 2026, non publiée sur le site. Aucun avis cité : Apple exige l'accord de chaque auteur, non confirmé.
 - Absences à ne jamais combler : aucun article de presse, aucun chiffre d'utilisateurs, aucun autre témoignage, aucune durée d'essai vérifiée.
 
 ## Product Principles
