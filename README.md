@@ -225,9 +225,13 @@ réduit en direct). Changements :
 
 | | Brut | Brotli (q 11) | Budget brut |
 |---|---|---|---|
-| `index.html` | 44,8 Ko | 8,4 Ko | 60 Ko |
-| `styles.css` | 54,8 Ko | 11,8 Ko | 60 Ko (55 Ko visés depuis le polissage 2) |
-| `main.js` | 34,2 Ko | 10,1 Ko | 45 Ko |
+| `index.html` | 47,7 Kio (44,8 Ko au polissage 2) | 8,7 Kio | 60 Ko |
+| `styles.css` | 56,7 Kio (54,8 Ko au polissage 2 ; les pages légales et la 1.4.0 l'ont fait grandir) | 12,3 Kio | 60 Ko (55 Ko visés depuis le polissage 2) |
+| `main.js` | 33,4 Kio | 9,9 Kio | 45 Ko |
+
+Mesures du 14 novembre 2026 (mise à jour de la 1.4.0, Brotli de `zlib` de Node). Poids de l'accueil défilé jusqu'au
+bas, non compressé : 384 à 401 Kio selon la taille, dont 179 à 196 Kio d'images, 17 à 19 requêtes (391 à 394 Kio et
+190 à 193 Kio avant, mesurés de la même façon) ; 24 fichiers dans `assets/img`.
 
 Le polissage 2 a payé la refonte du ciel, des cartes de pilier et des volets par des retraits : les planchers et les
 variantes du ciel, la galerie en liste et son échelle, l'écran arrière de #app, les poids de police redondants, des
@@ -257,6 +261,7 @@ aucune image trop grande sur iPhone (42 Kio avant la taille 660).
 | Badge au-dessus du pli | 375 × 667 (bas du badge à 575 px), 390 × 844 (718), 1366 × 768 (590), 1440 × 900 (660), 320 × 568 (492) ; héros à 100svh exactement de 320 × 568 à 2560 × 1440 ; jamais deux badges visibles ensemble ; la pilule se retire aussi devant les deux appels en texte |
 | Hauteurs | #seances : 1 075 px à 1440 (1,19 écran ; 1 820 avant) et 1 059 px à 390 (1,25 écran ; 2 856 avant) |
 | Pages légales (recette du 12 novembre 2026, après la revue) | `/confidentialite` et `/conditions`, avec l'accueil, les mentions légales et la 404 : html-validate 0 erreur ; axe-core 0 violation à 390 et 1280 ; 0 violation de CSP, 0 erreur JavaScript, 0 requête hors origine, ni cookie ni stockage ; contraste mesuré de 6,59:1 au moins ; 0 lien interne cassé, `/privacy` et `/terms` en 308 ; texte de 125 à 200 % de 320 à 1280 px : en-tête sans débordement (la pilule se retire sous 10,125 em de barre) et aucun mot coupé dans les titres des pages légales ; au texte normal, styles calculés identiques à la version précédente sur l'accueil (particules exceptées), les mentions légales, les conditions et la 404 |
+| Mise à jour de la 1.4.0 (recette du 14 novembre 2026, serveur local qui applique `vercel.json`) | html-validate 9 (`recommended` + `a11y`) : 0 erreur sur les cinq pages ; axe-core 4 : 0 violation sur l'accueil à 390 et 1440, en mouvement normal et réduit (après défilement complet), et sur les quatre autres pages à 390 et 1280 ; console : 0 erreur ni avertissement (hors le statut 404 voulu de `/nexiste-pas`), 0 violation de CSP, 0 requête hors origine, 0 échec ; 38 chemins internes et toutes les ancres résolus, `/privacy`, `/terms`, `/index.html` en 308 ; débordement horizontal nul à 390, 1280 et 1440 ; 13 images de l'accueil chargées ; badge du héros au-dessus du pli à 320 × 568 (bas à 504 px, mention à 541), 375 × 667 (587), 390 × 844 (730), 1366 × 768 (602) et 1440 × 900 (672) ; mouvement réduit : aucune animation en cours. Captures à 1440 × 900 et 390 × 844 regardées section par section. Lighthouse et fluidité non refaits (aucun changement de script ni de lumière) |
 | Non mesuré ici | un vrai iPhone 12 et un MacBook Air sous Safari (demandé avant livraison) |
 
 ## À savoir avant de modifier
